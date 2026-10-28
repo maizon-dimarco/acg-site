@@ -1,5 +1,7 @@
 import Lockup from "@/components/Lockup";
 import HomeScript from "@/components/HomeScript";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import "@/styles/home.css";
 
 export default function Home() {
@@ -7,20 +9,7 @@ export default function Home() {
     <>
 
 
-<header className="nav wrap on-dark" id="nav">
-  <div className="card">
-  <a className="mobile-brand" href="#top" aria-label="American Change &amp; Grow"><Lockup className="wm" /></a>
-  <ul>
-    <li className="home"><a href="#top" aria-label="American Change &amp; Grow"><Lockup className="wm" /></a></li>
-    <li><a href="#situations">Turnaround</a></li>
-    <li><a href="#situations">Transactions</a></li>
-    <li><a href="#situations">Value Creation</a></li>
-    <li><a href="#situations">Interim Leadership</a></li>
-    <li><a href="#situations">Operational AI</a></li>
-  </ul>
-  <div className="right"><a className="insights" href="#contact"><span className="word">Insights</span></a><a href="#contact">Contact</a><b>Menu {"\u00a0"}· ·</b></div>
-  </div>
-</header>
+<Nav />
 
 <div className="opener" id="top">
   <div className="film" id="film" style={{ backgroundImage: "url(/film/home-desktop-poster.jpg)" }}>
@@ -74,11 +63,11 @@ export default function Home() {
       <div>
         <h2 className="sec rv">We are usually called in one of five moments.</h2>
         <ul className="sit rv mt48">
-          <li data-src="/film/home-desktop-poster.jpg" data-pos="50% 15%" data-cap="Through the weather"><a href="#situations"><span className="n">01</span><span className="t">Turnaround &amp; Restructuring</span><p className="w">Liquidity is tightening and the 13-week forecast is no longer a formality. We stabilize cash, rebuild the plan, and give management and lenders one set of numbers.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
-          <li data-src="/film/home-desktop-poster.jpg" data-pos="50% 62%" data-cap="The ridge line"><a href="#situations"><span className="n">02</span><span className="t">Refinancing &amp; M&amp;A</span><p className="w">A facility is maturing, a covenant has tripped, or a sale is the right outcome. We run the process and negotiate terms the business can live with.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
-          <li data-src="/film/river.jpg" data-pos="50% 50%" data-cap="The valley opens"><a href="#situations"><span className="n">03</span><span className="t">Value Creation</span><p className="w">The business is sound but the margin isn't. We find the operating improvements that are already there and put them into the P&amp;L inside two quarters.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
-          <li data-src="/film/home-desktop-poster.jpg" data-pos="20% 40%" data-cap="A steady hand"><a href="#situations"><span className="n">04</span><span className="t">Interim Management</span><p className="w">The seat needs an operator now. We step in as interim CRO, CFO or COO with authority to act, and hand back a business in better order.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
-          <li data-src="/film/river.jpg" data-pos="80% 30%" data-cap="Signal in the water"><a href="#situations"><span className="n">05</span><span className="t">Operational AI</span><p className="w">Agents built into the finance, operations and reporting work of the companies we run, so a lean team sees further and moves faster.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
+          <li data-src="/film/home-desktop-poster.jpg" data-pos="50% 15%" data-cap="Through the weather"><a href="/turnaround"><span className="n">01</span><span className="t">Turnaround &amp; Restructuring</span><p className="w">Liquidity is tightening and the 13-week forecast is no longer a formality. We stabilize cash, rebuild the plan, and give management and lenders one set of numbers.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
+          <li data-src="/film/home-desktop-poster.jpg" data-pos="50% 62%" data-cap="The ridge line"><a href="/transactions"><span className="n">02</span><span className="t">Refinancing &amp; M&amp;A</span><p className="w">A facility is maturing, a covenant has tripped, or a sale is the right outcome. We run the process and negotiate terms the business can live with.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
+          <li data-src="/film/river.jpg" data-pos="50% 50%" data-cap="The valley opens"><a href="/value-creation"><span className="n">03</span><span className="t">Value Creation</span><p className="w">The business is sound but the margin isn't. We find the operating improvements that are already there and put them into the P&amp;L inside two quarters.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
+          <li data-src="/film/home-desktop-poster.jpg" data-pos="20% 40%" data-cap="A steady hand"><a href="/interim-leadership"><span className="n">04</span><span className="t">Interim Management</span><p className="w">The seat needs an operator now. We step in as interim CRO, CFO or COO with authority to act, and hand back a business in better order.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
+          <li data-src="/film/river.jpg" data-pos="80% 30%" data-cap="Signal in the water"><a href="/operational-ai"><span className="n">05</span><span className="t">Operational AI</span><p className="w">Agents built into the finance, operations and reporting work of the companies we run, so a lean team sees further and moves faster.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
         </ul>
       </div>
     </div>
@@ -156,10 +145,7 @@ export default function Home() {
     </div>
   </section>
 
-  <footer className="wrap">
-    <span>© 2026 American Change &amp; Grow Management Consulting, LLC</span>
-    <span>Turnaround · Transactions · Value Creation · Interim Leadership · Operational AI</span>
-  </footer>
+  <Footer />
 </main>
 
 

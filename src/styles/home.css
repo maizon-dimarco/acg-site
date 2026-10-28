@@ -20,7 +20,7 @@
   /* ---- film opener ---- */
   .opener { position: relative; height: 300vh; height: 300lvh; }
   .film { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; background: var(--bg) center / cover no-repeat; }
-  .film video, .film img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .film video, .film img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
   .film video { opacity: 0; transition: opacity .6s ease; }
   .film.ready video#vid { opacity: 1; }
   .film video.loop { opacity: 0; transition: opacity .9s ease; z-index: 1; }
@@ -43,6 +43,7 @@
   .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 40px; }
   .nav a, .nav b { white-space: nowrap; }
   @media (min-width: 1000px) and (max-width: 1300px) { .nav { font-size: 11px; } .nav ul { gap: 28px; } }
+  @media (min-width: 1300px) and (max-width: 1520px) { .nav ul { gap: 30px; } .nav .right { gap: 34px; } }
   .nav li a { display: block; opacity: 1; padding-bottom: 40px; border-bottom: 2px solid transparent; transition: color .3s, border-color .3s; }
   .nav li a:hover { color: var(--red); }
   .nav li.home a:hover { color: inherit; }
@@ -211,7 +212,7 @@
   section.d#contact { position: relative; overflow: hidden; border-top: 0; padding-block: 160px 140px; isolation: isolate; }
   @media (max-width: 720px) { section.d#contact { padding-block: 110px 90px; } }
   .river { position: absolute; inset: 0; z-index: 0; background: #0F1A26; }
-  .river img { position: absolute; left: 50%; top: 50%; width: 100%; height: 116%; object-fit: cover; object-position: 40% 50%; transform: translate(-50%, -50%) scale(1.04); will-change: transform; }
+  .river img { position: absolute; left: 50%; top: 50%; width: 100%; height: 116%; max-width: none; object-fit: cover; object-position: 40% 50%; transform: translate(-50%, -50%) scale(1.04); will-change: transform; }
     .river .wash { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(22,41,59,.9) 0%, rgba(22,41,59,.3) 26%, rgba(22,41,59,.22) 70%, rgba(22,41,59,.85) 100%); }
   .river .lamp { position: absolute; inset: 0; mix-blend-mode: screen; opacity: 0; transition: opacity .8s ease; background: radial-gradient(circle 300px at var(--lx, 50%) var(--ly, 50%), rgba(255,214,160,.34), rgba(255,214,160,.1) 45%, rgba(255,214,160,0) 70%); pointer-events: none; }
   .river .lamp.on { opacity: 1; }

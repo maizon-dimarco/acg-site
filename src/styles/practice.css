@@ -1,0 +1,54 @@
+/* Practice pages: one cinematic opening screen on a still, then the document (which reuses home.css). */
+
+.phero { position: relative; height: 100vh; height: 100lvh; min-height: 560px; overflow: hidden; background: var(--bg); color: var(--fg); display: flex; align-items: flex-end; }
+.phero.ink { color: var(--ink); }
+.pfilm { position: absolute; inset: 0; }
+.pfilm img { position: absolute; inset: -6%; width: 112%; height: 112%; max-width: none; object-fit: cover; transform: scale(1.06); will-change: transform; }
+.pwash { position: absolute; inset: 0; background: linear-gradient(to top, rgba(22,41,59,.72) 0%, rgba(22,41,59,.28) 38%, rgba(22,41,59,.08) 70%, rgba(22,41,59,.35) 100%); }
+.phero.ink .pwash { background: linear-gradient(to top, rgba(244,240,232,.55) 0%, rgba(244,240,232,.15) 40%, rgba(244,240,232,0) 70%, rgba(244,240,232,.25) 100%); }
+.ptext { position: relative; z-index: 1; width: 100%; padding-bottom: clamp(96px, 16vh, 160px); max-width: 100%; }
+.pkick { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; opacity: .8; margin-bottom: 22px; }
+.phl { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 4.6rem); line-height: 1.08; letter-spacing: -.01em; text-shadow: 0 2px 30px rgba(8,11,16,.35); text-wrap: balance; }
+.phero.ink .phl { text-shadow: 0 1px 24px rgba(255,255,255,.45); }
+.phl .ln { display: block; opacity: 0; transform: translateY(12px); transition: opacity .9s ease, transform .9s ease; }
+.phl .ln.on { opacity: 1; transform: none; }
+.phl .ln:nth-child(2) { transition-delay: .18s; }
+.psub { margin: 26px 0 36px; max-width: 46ch; font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.5; opacity: .92; }
+.phero .scroll-hint { color: inherit; opacity: .55; }
+@media (max-width: 720px) { .ptext { padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px)); } .psub { margin: 18px 0 28px; } .pfilm img { transform: scale(1.02); } }
+
+/* the work list: rows are not links here */
+.sit.plain li .row { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 24px; padding: 30px 0; align-items: baseline; }
+@media (min-width: 900px) { .sit.plain li .row { grid-template-columns: 56px 280px minmax(0, 1fr); } }
+.sit.plain li:hover .n { color: var(--red); }
+
+.case.top { margin-top: 0; }
+
+/* partner + next */
+.ppartner { display: grid; gap: 48px; grid-template-columns: minmax(0, 1fr); max-width: 1180px; }
+@media (min-width: 900px) { .ppartner { grid-template-columns: minmax(0, 1fr) 320px; align-items: end; } }
+.ppartner .person { max-width: 420px; }
+.pnext .label { padding-top: 0; margin-bottom: 18px; }
+.nextlink { display: grid; grid-template-columns: 40px minmax(0, 1fr) 30px; align-items: center; gap: 16px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.nextlink .n { font-size: 10px; letter-spacing: .26em; color: var(--muted); }
+.nextlink .t { font-size: 1.05rem; letter-spacing: .14em; text-transform: uppercase; }
+.nextlink i { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: background .3s, border-color .3s; }
+.nextlink i svg { width: 11px; height: 11px; }
+.nextlink:hover i { background: var(--ink); border-color: var(--ink); }
+.nextlink:hover i svg { stroke: var(--paper); }
+
+/* contact: the blue-hour frame, compact */
+section.d.pcontact { position: relative; overflow: hidden; border-top: 0; padding-block: 140px 120px; isolation: isolate; }
+@media (max-width: 720px) { section.d.pcontact { padding-block: 100px 80px; } }
+.pcbg { position: absolute; inset: 0; z-index: 0; background: #0F1A26; }
+.pcbg img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 40% 50%; }
+.pcbg .wash { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(22,41,59,.92) 0%, rgba(22,41,59,.4) 30%, rgba(22,41,59,.35) 70%, rgba(22,41,59,.9) 100%); }
+.pcontact .contact { position: relative; z-index: 1; }
+.pcontact .big { max-width: 18ch; font-size: clamp(1.9rem, 3.4vw, 3rem); text-shadow: 0 2px 30px rgba(8,11,16,.35); }
+.pcontact .lines b { font-size: clamp(1.5rem, 2.6vw, 2.1rem); letter-spacing: .04em; display: inline-block; margin-bottom: 6px; }
+.pcontact form { background: var(--paper); color: var(--ink); padding: 36px 32px 30px; border-radius: 3px; box-shadow: 0 30px 80px rgba(8,11,16,.35); --line: rgba(31,58,82,.22); --muted: rgba(31,58,82,.55); }
+.pcontact .f input, .pcontact .f textarea { color: var(--ink); }
+.pcontact .f input:focus, .pcontact .f textarea:focus { border-bottom-color: var(--ink); }
+.pcontact .go:hover i svg { stroke: var(--paper); }
+.pcontact .note { color: var(--muted); }
+@media (max-width: 720px) { .pcontact form { padding: 28px 22px 24px; } }
