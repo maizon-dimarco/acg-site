@@ -1,5 +1,6 @@
 import Lockup from "@/components/Lockup";
 import { practices } from "@/content/practices";
+import Menu from "@/components/Menu";
 
 /** Site header. Montfort proportions on desktop; a white card that appears on scroll on phones. */
 export default function Nav({ current, ink = "on-dark" }: { current?: string; ink?: "on-dark" | "on-light" }) {
@@ -13,7 +14,7 @@ export default function Nav({ current, ink = "on-dark" }: { current?: string; in
             <li key={p.slug} className={p.slug === current ? "on" : ""}><a href={`/${p.slug}`}>{p.nav}</a></li>
           ))}
         </ul>
-        <div className="right"><a className="insights" href="/#contact"><span className="word">Insights</span></a><a href="/#contact">Contact</a><b>Menu {" "}· ·</b></div>
+        <div className="right"><a className="insights" href="/#contact"><span className="word">Insights</span></a><a href="/#contact">Contact</a><Menu current={current} /></div>
       </div>
     </header>
   );
