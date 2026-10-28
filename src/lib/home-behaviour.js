@@ -1,7 +1,9 @@
 /* eslint-disable */
+import { wireContactForm } from "@/lib/contact-form";
 // Behaviour for the home page, ported from the approved prototype. Plain JS on purpose:
 // it is DOM-driven animation code; the React layer only mounts it once.
 export function run() {
+  wireContactForm();
 
 (function () {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -95,7 +97,6 @@ export function run() {
   }
   update(); smooth = progress; requestAnimationFrame(frame);
 
-  document.getElementById('form').addEventListener('submit', function (e) { e.preventDefault(); document.getElementById('formnote').textContent = 'Thank you. A partner will reply within one business day.'; });
 })();
 
   setTimeout(function () { document.querySelectorAll('.open .ln').forEach(function (l) { l.classList.add('on'); }); }, 400);

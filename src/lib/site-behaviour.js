@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { wireContactForm } from "@/lib/contact-form";
 // Behaviour shared by the inner pages: header state, reveals, the dynamic document layer
 // (word fill, counters, case rows, step line, cursor ring, magnetic buttons) and the hero drift.
 export function run() {
@@ -29,8 +30,7 @@ export function run() {
   window.addEventListener('resize', function () { dirty = true; });
   (function loop() { if (dirty) update(); requestAnimationFrame(loop); })();
   setTimeout(function () { document.querySelectorAll('.phero .ln').forEach(function (l) { l.classList.add('on'); }); }, 350);
-  var form = document.getElementById('form');
-  if (form) form.addEventListener('submit', function (e) { e.preventDefault(); var n = document.getElementById('formnote'); if (n) n.textContent = 'Thank you. A partner will reply within one business day.'; });
+  wireContactForm();
   // ---------- dynamic layer ----------
   (function () {
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

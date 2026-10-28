@@ -128,7 +128,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
                 <span>contact@acg-domain.com</span>
               </div>
             </div>
-            <form className="rv" id="form">
+            <form className="rv" id="form"><input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px" }} />
               <div className="f"><label htmlFor="name">Name</label><input id="name" name="name" type="text" autoComplete="name" /></div>
               <div className="f"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" /></div>
               <div className="f"><label htmlFor="sit">The situation, in a line</label><textarea id="sit" name="situation"></textarea></div>
