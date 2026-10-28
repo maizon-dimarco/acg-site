@@ -43,8 +43,8 @@ export default function Menu({ current }: { current?: string }) {
             <span>contact@acg-domain.com</span>
             <span className="muted">Address to come<br />United States</span>
             <a className="go" href="/#contact" onClick={() => setOpen(false)}>Discuss a situation <i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4" /></svg></i></a>
-            <div className="label" style={{ marginTop: 40 }}>Insights</div>
-            <span className="muted">Writing from the partners. Coming soon.</span>
+            <div className="label" style={{ marginTop: 40 }}>Work</div>
+            <a href="/work" className={current === "work" ? "on" : ""}>The record: engagements across the middle market</a>
           </aside>
         </div>
       </div>,

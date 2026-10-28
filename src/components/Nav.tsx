@@ -14,7 +14,7 @@ export default function Nav({ current, ink = "on-dark" }: { current?: string; in
             <li key={p.slug} className={p.slug === current ? "on" : ""}><a href={`/${p.slug}`}>{p.nav}</a></li>
           ))}
         </ul>
-        <div className="right"><a className="insights" href="/#contact"><span className="word">Insights</span></a><a href="/#contact">Contact</a><Menu current={current} /></div>
+        <div className="right"><a className={`insights ${current === "work" ? "on" : ""}`} href="/work"><span className="word">Work</span></a><a href="/#contact">Contact</a><Menu current={current} /></div>
       </div>
     </header>
   );

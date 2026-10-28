@@ -48,6 +48,8 @@
   .nav li a:hover { color: var(--red); }
   .nav li.home a:hover { color: inherit; }
   .nav .right a:hover, .nav .right b:hover { color: var(--red); cursor: pointer; }
+  .nav .right a.on { border-bottom: 2px solid currentColor; padding-bottom: 4px; }
+  .menu-side a.on { color: var(--red); }
   .nav li.on a { border-bottom-color: currentColor; }
   .nav .right { display: flex; gap: 48px; align-items: center; }
   .nav .right a { opacity: 1; transition: color .3s; }

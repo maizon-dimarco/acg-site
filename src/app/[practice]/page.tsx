@@ -100,7 +100,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
                   <div className="row"><dt>Outcome</dt><dd>{p.engagement.outcome}</dd></div>
                 </dl>
               </div>
-              <p className="note rv mt20">Engagement details are illustrative until the firm&apos;s record is supplied.</p>
+              <p className="note rv mt20">Engagement details are illustrative until the firm&apos;s record is supplied. <a href="/work" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>All engagements</a></p>
             </div>
           </div>
         </section>

@@ -29,7 +29,7 @@ export function run() {
   window.addEventListener('scroll', function () { dirty = true; }, { passive: true });
   window.addEventListener('resize', function () { dirty = true; });
   (function loop() { if (dirty) update(); requestAnimationFrame(loop); })();
-  setTimeout(function () { document.querySelectorAll('.phero .ln').forEach(function (l) { l.classList.add('on'); }); }, 350);
+  setTimeout(function () { document.querySelectorAll('.phero .ln, .wh1 .ln').forEach(function (l) { l.classList.add('on'); }); }, 350);
   wireContactForm();
   // ---------- dynamic layer ----------
   (function () {
