@@ -20,9 +20,9 @@ export function run() {
     nav.classList.toggle('on-light', light);
     nav.classList.toggle('on-dark', !light);
     if (hero && heroImg && !reduced) {
-      var hr = hero.getBoundingClientRect(); var k = Math.min(1, Math.max(0, -hr.top / Math.max(1, hr.height - vh)));
-      heroImg.style.transform = 'translate3d(0,' + (k * 60).toFixed(1) + 'px,0) scale(' + (1.06 + k * 0.05).toFixed(3) + ')';
-      if (heroText) heroText.style.opacity = String(Math.max(0, 1 - k * 1.6));
+      var hr = hero.getBoundingClientRect(); var k = Math.min(1, Math.max(0, -hr.top / Math.max(1, hr.height)));
+      heroImg.style.transform = 'translate3d(0,' + (k * 80).toFixed(1) + 'px,0) scale(' + (1.06 + k * 0.05).toFixed(3) + ')';
+      if (heroText) { heroText.style.opacity = String(Math.max(0, 1 - Math.max(0, k - 0.1) / 0.5)); heroText.style.transform = 'translate3d(0,' + (k * 30).toFixed(1) + 'px,0)'; }
     }
     dirty = false;
   }
