@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* Brand tokens. The logo's colours, warm paper, one typeface. */
+:root {
+  --navy: #1F3A52;
+  --navy-deep: #16293B;
+  --paper: #F4F0E8;
+  --red: #C8432B;
+  --red-fold: #8D301E;
+  --font-fraunces: "Fraunces", "Iowan Old Style", Georgia, serif;
+}
+
+html { background: var(--navy-deep); }
