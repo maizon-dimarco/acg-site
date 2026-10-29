@@ -13,11 +13,11 @@ export function wireContactForm() {
     fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
       .then(function (r) { return r.json().then(function (j) { return { s: r.status, j: j }; }); })
       .then(function (res) {
-        if (res.j && res.j.ok) { note.textContent = 'Thank you. A partner will reply within one business day.'; form.reset(); }
+        if (res.j && res.j.ok) { note.textContent = 'Thank you. A managing director will reply within one business day.'; form.reset(); }
         else if (res.s === 422) { note.textContent = 'Please add your name, a valid email and a line about the situation.'; }
-        else { note.textContent = 'The form isn’t connected yet. Please call +1 (000) 000-0000 or email contact@acg-domain.com.'; }
+        else { note.textContent = 'The form isn’t connected yet. Please call +1 (404) 880-3381 or email contact@acg-domain.com.'; }
       })
-      .catch(function () { note.textContent = 'Something went wrong. Please call +1 (000) 000-0000 or email contact@acg-domain.com.'; })
+      .catch(function () { note.textContent = 'Something went wrong. Please call +1 (404) 880-3381 or email contact@acg-domain.com.'; })
       .then(function () { if (btn) btn.disabled = false; });
   });
 }

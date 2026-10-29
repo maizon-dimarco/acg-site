@@ -44,9 +44,9 @@ export default function Menu({ current }: { current?: string }) {
           </nav>
           <aside className="menu-side">
             <div className="label">Contact</div>
-            <b>+1 (000) 000-0000</b>
+            <b><a href="tel:+14048803381">+1 (404) 880-3381</a></b>
             <span>contact@acg-domain.com</span>
-            <span className="muted">Address to come<br />United States</span>
+            <span className="muted">1100 Peachtree Street NE, Suite 900<br />Atlanta, Georgia</span>
             <a className="go" href="/#contact" onClick={() => setOpen(false)}>Discuss a situation <i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4" /></svg></i></a>
 
           </aside>

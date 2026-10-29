@@ -32,7 +32,7 @@ export const practices: Practice[] = [
     hero: { desktop: "/film/turnaround-hero.jpg", mobile: "/film/turnaround-hero-mobile.jpg", ink: "paper", caption: "The valley under weather, the light beginning to break" },
     situation: {
       statement: "Liquidity is tightening, a covenant is close, and the people who used to believe the numbers have started asking for them weekly.",
-      lead: "This is the moment a lender, a board or a sponsor makes the call. We come in as operators, not observers: the partner you speak to runs the engagement, builds the forecast with your finance team, and sits in the room with the bank. The goal is not a report. It is a business that is stable in weeks and credible again in months.",
+      lead: "This is the moment a lender, a board or a sponsor makes the call. We come in as operators, not observers: the managing director you speak to runs the engagement, builds the forecast with your finance team, and sits in the room with the bank. The goal is not a report. It is a business that is stable in weeks and credible again in months.",
     },
     work: [
       { t: "13-week cash forecast", w: "Rebuilt from the bank statements up, owned by your team by week two, reported every Friday without exception." },
@@ -53,7 +53,7 @@ export const practices: Practice[] = [
       action: "Rebuilt the 13-week cash forecast in ten days, negotiated a 90-day standstill, took the interim CFO seat and reset pricing on the bottom third of accounts.",
       outcome: "Positive cash in week seven. Facility amended and extended at month four. Sponsor funded the plan; management retained.",
     },
-    partner: { name: "Baker Smith", role: "Founder & Managing Partner", bio: "[Twenty-plus years leading turnarounds and restructurings for middle-market companies and their lenders. Bio to come from Baker.]" },
+    partner: { name: "Baker Smith", role: "Managing Director", bio: "[More than thirty years leading turnarounds and restructurings for middle-market companies and their lenders. Bio to come from Baker.]" },
     next: "transactions",
   },
   {
@@ -66,7 +66,7 @@ export const practices: Practice[] = [
     hero: { desktop: "/film/transactions-hero.jpg", mobile: "/film/transactions-hero-mobile.jpg", ink: "paper", caption: "Two rivers meeting" },
     situation: {
       statement: "The capital structure no longer fits the business, and the people across the table know it.",
-      lead: "A maturity is coming, a covenant has tripped, or the honest answer is that the company is worth more in someone else's hands. These situations reward preparation and punish surprise. We build the case before the first meeting, run the process at the pace the situation demands, and sit across the table from lenders and buyers as people who have been on their side of it.",
+      lead: "A refinancing has stalled, a sale has fallen through, or a maturity is coming with no package prepared. These are the moments a restructuring advisor is brought in. These situations reward preparation and punish surprise. We build the case before the first meeting, run the process at the pace the situation demands, and sit across the table from lenders and buyers as people who have been on their side of it.",
     },
     work: [
       { t: "Refinancing and recapitalization", w: "The lender case built from the forecast up: what the business can service, what it can't, and why the new structure holds. Term sheets negotiated, not accepted." },
@@ -86,7 +86,7 @@ export const practices: Practice[] = [
       action: "Built the lender case in three weeks, ran a parallel refinancing and minority-sale process, and negotiated a bridge from the incumbent to cover the gap.",
       outcome: "Refinanced with a new lender at month four. The owners kept control. The minority offer stayed on file as the fallback that never had to be used.",
     },
-    partner: { name: "[Partner name]", role: "Partner, Transactions", bio: "[Bio to come. 150–250 words, written for a lender reading at eleven at night.]" },
+    partner: { name: "[Managing director name]", role: "Managing Director, Transactions", bio: "[Bio to come. 150–250 words, written for a lender reading at eleven at night.]" },
     next: "value-creation",
   },
   {
@@ -95,11 +95,11 @@ export const practices: Practice[] = [
     nav: "Value Creation",
     title: "Value Creation",
     headline: ["The business is sound.", "The margin isn't."],
-    sub: "The operating improvements that are already there, found and put into the P&L inside two quarters.",
+    sub: "The operating improvements that are already there, found with your team and put into the P&L, on a timeline the numbers support.",
     hero: { desktop: "/film/value-hero.jpg", mobile: "/film/value-hero-mobile.jpg", ink: "paper", caption: "The valley in full sun" },
     situation: {
       statement: "Revenue is fine. Everything underneath it has drifted.",
-      lead: "Pricing that hasn't moved in three years, a cost base built for a bigger company, working capital tied up where nobody is looking. None of it is dramatic and all of it is money. We find it with your team, rank it by what it is worth against what it takes, and put the top of the list into the numbers before the next board meeting.",
+      lead: "Pricing that hasn't moved in three years, a cost base built for a bigger company, working capital tied up where nobody is looking. None of it is dramatic and all of it is money. We find it with your team, rank it by what it is worth against what it takes, and start putting the top of the list into the numbers before the next board meeting.",
     },
     work: [
       { t: "Margin and pricing", w: "Customer and product profitability rebuilt from the invoice up. The bottom third of accounts repriced or released." },
@@ -110,7 +110,7 @@ export const practices: Practice[] = [
     steps: [
       { h: "A conversation this week", p: "With a partner. We tell you where the money usually is in a business like yours, and whether it is worth our time and your fee." },
       { h: "A diagnostic in weeks", p: "The full list, each item sized and sequenced. No slideware; a plan a plant manager can read." },
-      { h: "A plan with a clock on it", p: "Two quarters. What lands in which month, who owns it, and what we report every Friday." },
+      { h: "A plan with a clock on it", p: "What lands in which month, who owns it, and what we report every Friday. Most of the list is in the run-rate within the year; the first items land in the first quarter." },
       { h: "A partner alongside management", p: "In the business, not in a conference room, until the improvements are in the run-rate and the cadence is yours." },
     ],
     engagement: {
@@ -119,7 +119,7 @@ export const practices: Practice[] = [
       action: "Repriced the bottom quartile of contracts, released two loss-making service lines, and rebuilt the monthly operating review around five numbers.",
       outcome: "Margin recovered three of the four points inside two quarters. The sponsor financed the growth plan on the strength of the run-rate.",
     },
-    partner: { name: "[Partner name]", role: "Partner, Operations", bio: "[Bio to come.]" },
+    partner: { name: "[Managing director name]", role: "Managing Director, Operations", bio: "[Bio to come.]" },
     next: "interim-leadership",
   },
   {
@@ -128,20 +128,23 @@ export const practices: Practice[] = [
     nav: "Interim Leadership",
     title: "Interim Management",
     headline: ["The seat needs", "an operator now."],
-    sub: "Interim CRO, CFO or COO with authority to act, in the seat until the business is handed back in better order.",
+    sub: "Interim CEO, CRO, CFO or COO with authority to act, in the seat until the business is handed back in better order.",
     hero: { desktop: "/film/interim-hero.jpg", mobile: "/film/interim-hero-mobile.jpg", ink: "paper", caption: "The one lit house at dusk" },
     situation: {
       statement: "Someone has to run this, this week, with the authority to decide.",
       lead: "A CFO has left in the middle of a refinancing. The board no longer trusts the forecast and needs a name on it. A sponsor wants an operator in the building before it funds. We take the seat, not the adjacent one: a partner with the title, the authority and the accountability, for as long as the situation needs and no longer.",
     },
     work: [
+      { t: "Interim CEO", w: "The company run day to day with a mandate from the board, through the period when a permanent chief executive is not the right answer yet." },
       { t: "Chief Restructuring Officer", w: "Appointed with a mandate from the board and the lenders, owning the plan and the numbers through the restructuring." },
       { t: "Interim CFO", w: "The forecast, the bank and the board, from day one. The finance team rebuilt where it needs to be, kept where it doesn't." },
       { t: "Interim COO", w: "Operations run to the plan: the supply chain, the plant, the people, the weekly numbers." },
+      { t: "Sole officer and director", w: "Where everyone else has left, the surviving officer and director with the authority and the accountability to see the company through." },
+      { t: "Wind-down and liquidating trustee", w: "When the right outcome is an orderly end: assets realized, creditors treated properly, the process closed cleanly." },
       { t: "Transition and handback", w: "The permanent hire found or developed, the tooling and the cadence left behind, the seat handed over clean." },
     ],
     steps: [
-      { h: "A conversation this week", p: "With the partner who would take the seat. Not a candidate list; the person." },
+      { h: "A conversation this week", p: "With the managing director who would take the seat. Not a candidate list; the person." },
       { h: "In the seat in days", p: "Mandate agreed with the board and the lenders, first read of cash and the three decisions that cannot wait." },
       { h: "A plan the board can hold us to", p: "What stable looks like, by when, and what we report every Friday until we get there." },
       { h: "A clean handback", p: "A business in better order, a successor in place, and nothing that depends on us staying." },
@@ -152,7 +155,7 @@ export const practices: Practice[] = [
       action: "Took the interim CFO seat, rebuilt the forecast and the covenant model, and led the amendment negotiation personally.",
       outcome: "Covenant reset agreed. A permanent CFO recruited and in place at month five; the forecast handed over with the bank's confidence intact.",
     },
-    partner: { name: "Baker Smith", role: "Founder & Managing Partner", bio: "[Twenty-plus years leading turnarounds and restructurings for middle-market companies and their lenders. Bio to come from Baker.]" },
+    partner: { name: "Baker Smith", role: "Managing Director", bio: "[More than thirty years leading turnarounds and restructurings for middle-market companies and their lenders. Bio to come from Baker.]" },
     next: "operational-ai",
   },
   {
@@ -185,7 +188,7 @@ export const practices: Practice[] = [
       action: "Built an agent that pulls the bank, AR and AP data nightly and drafts the 13-week forecast and the Friday report for review.",
       outcome: "The report out every Friday by noon with a day of the team's week returned to collections. Tooling handed over at the end of the engagement.",
     },
-    partner: { name: "[Partner name]", role: "Partner, Operations", bio: "[Bio to come.]" },
+    partner: { name: "[Managing director name]", role: "Managing Director, Operations", bio: "[Bio to come.]" },
     next: "turnaround",
   },
 ];

@@ -35,7 +35,7 @@ export default function Home() {
       <div className="block">
         <h2 className="hl"><span className="ln">Turnaround, restructuring,</span><span className="ln">refinancing and interim leadership</span><span className="ln">for the middle market.</span></h2>
         <div className="arrive">
-          <span className="tel">+1 (000) 000-0000</span>
+          <a className="tel" href="tel:+14048803381">+1 (404) 880-3381</a>
           <a className="go mag" href="#contact">Discuss a situation <i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></i></a>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default function Home() {
       <div className="label">Who we are</div>
       <div>
         <p className="statement rv">We are the people a lender, a board or a sponsor calls when a business is in trouble and the plan has to work the <em>first</em> time.</p>
-        <p className="lead rv">American Change &amp; Grow is a senior-led advisory firm. The partner you meet on the first call runs the engagement, sits in the room with your lenders, and stays until the company is stable. No bench, no hand-off, no second team.</p>
+        <p className="lead rv">American Change &amp; Grow is a senior-led advisory firm. The managing director you meet on the first call runs the engagement, sits in the room with your lenders, and stays until the company is stable.</p>
       </div>
     </div>
   </section>
@@ -64,9 +64,9 @@ export default function Home() {
         <h2 className="sec rv">We are usually called in one of five moments.</h2>
         <ul className="sit rv mt48">
           <li data-src="/film/turnaround-hero-peek.jpg" data-pos="50% 45%" data-cap="The light beginning to break"><a href="/turnaround"><span className="n">01</span><span className="t">Turnaround &amp; Restructuring</span><p className="w">Liquidity is tightening and the 13-week forecast is no longer a formality. We stabilize cash, rebuild the plan, and give management and lenders one set of numbers.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
-          <li data-src="/film/transactions-hero-peek.jpg" data-pos="50% 50%" data-cap="Two rivers meeting"><a href="/transactions"><span className="n">02</span><span className="t">Refinancing &amp; M&amp;A</span><p className="w">A facility is maturing, a covenant has tripped, or a sale is the right outcome. We run the process and negotiate terms the business can live with.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
-          <li data-src="/film/value-hero-peek.jpg" data-pos="50% 50%" data-cap="The valley in full sun"><a href="/value-creation"><span className="n">03</span><span className="t">Value Creation</span><p className="w">The business is sound but the margin isn't. We find the operating improvements that are already there and put them into the P&amp;L inside two quarters.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
-          <li data-src="/film/interim-hero-peek.jpg" data-pos="45% 50%" data-cap="The one lit house"><a href="/interim-leadership"><span className="n">04</span><span className="t">Interim Management</span><p className="w">The seat needs an operator now. We step in as interim CRO, CFO or COO with authority to act, and hand back a business in better order.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
+          <li data-src="/film/transactions-hero-peek.jpg" data-pos="50% 50%" data-cap="Two rivers meeting"><a href="/transactions"><span className="n">02</span><span className="t">Refinancing &amp; M&amp;A</span><p className="w">A facility is maturing, a covenant has tripped, or a sale has fallen through. We run the process and negotiate terms the business can live with.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
+          <li data-src="/film/value-hero-peek.jpg" data-pos="50% 50%" data-cap="The valley in full sun"><a href="/value-creation"><span className="n">03</span><span className="t">Value Creation</span><p className="w">The business is sound but the margin isn't. We find the operating improvements that are already there and put them into the P&amp;L, starting in the first quarter.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
+          <li data-src="/film/interim-hero-peek.jpg" data-pos="45% 50%" data-cap="The one lit house"><a href="/interim-leadership"><span className="n">04</span><span className="t">Interim Management</span><p className="w">The seat needs an operator now. We step in as interim CEO, CRO, CFO or COO with authority to act, and hand back a business in better order.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
           <li data-src="/film/ai-hero-peek.jpg" data-pos="50% 40%" data-cap="The river under stars"><a href="/operational-ai"><span className="n">05</span><span className="t">Operational AI</span><p className="w">Agents built into the finance, operations and reporting work of the companies we run, so a lean team sees further and moves faster.</p><span className="arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></a></li>
         </ul>
       </div>
@@ -77,11 +77,11 @@ export default function Home() {
     <div className="grid">
       <div className="label">People</div>
       <div>
-        <h2 className="sec rv">The partner on the first call is the partner in the room.</h2>
+        <h2 className="sec rv">The person on the first call is the person in the room.</h2>
         <div className="people rv mt56">
-          <div className="person"><div className="ph"></div><h3>Baker Smith</h3><div className="r">Founder &amp; Managing Partner</div><p>Twenty-plus years leading turnarounds and restructurings for middle-market companies and their lenders. Bio to come from Baker.</p></div>
-          <div className="person"><div className="ph"></div><h3>Partner name</h3><div className="r">Partner, Transactions</div><p>Bio to come. 150–250 words, written for a lender reading at eleven at night.</p></div>
-          <div className="person"><div className="ph"></div><h3>Partner name</h3><div className="r">Partner, Operations</div><p>Bio to come. Headshots treated consistently across the three.</p></div>
+          <div className="person"><div className="ph"></div><h3>Baker Smith</h3><div className="r">Managing Director</div><p>More than thirty years leading turnarounds and restructurings for middle-market companies and their lenders. Bio to come from Baker.</p></div>
+          <div className="person"><div className="ph"></div><h3>Managing Director name</h3><div className="r">Managing Director, Transactions</div><p>Bio to come. 150–250 words, written for a lender reading at eleven at night.</p></div>
+          <div className="person"><div className="ph"></div><h3>Managing Director name</h3><div className="r">Managing Director, Operations</div><p>Bio to come. Headshots treated consistently across the three.</p></div>
         </div>
       </div>
     </div>
@@ -92,7 +92,7 @@ export default function Home() {
       <div className="label">Record</div>
       <div>
         <div className="figs rv">
-          <div className="fig"><div className="n">20+</div><div className="l">Years leading turnarounds</div></div>
+          <div className="fig"><div className="n">30+</div><div className="l">Years leading turnarounds</div></div>
           <div className="fig"><div className="n">60</div><div className="l">Engagements across the middle market</div></div>
           <div className="fig"><div className="n">$1.2B</div><div className="l">Debt restructured or refinanced</div></div>
         </div>
@@ -130,9 +130,9 @@ export default function Home() {
       <div>
         <p className="big rv">If the situation is urgent, the first conversation is today.</p>
         <div className="lines rv">
-          <b>+1 (000) 000-0000</b>
+          <b><a href="tel:+14048803381">+1 (404) 880-3381</a></b>
           <span>contact@acg-domain.com</span>
-          <span>Address to come<br />United States</span>
+          <span>1100 Peachtree Street NE, Suite 900<br />Atlanta, Georgia</span>
         </div>
       </div>
       <form className="rv" id="form"><input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px" }} />
@@ -140,7 +140,7 @@ export default function Home() {
         <div className="f"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" /></div>
         <div className="f"><label htmlFor="sit">The situation, in a line</label><textarea id="sit" name="situation"></textarea></div>
         <button className="go mag" type="submit">Send <i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4"/></svg></i></button>
-        <p className="note" id="formnote">A partner replies within one business day.</p>
+        <p className="note" id="formnote">A managing director replies within one business day.</p>
       </form>
     </div>
   </section>

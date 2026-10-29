@@ -33,14 +33,14 @@ export default function WorkPage() {
           <div className="contact">
             <div>
               <p className="big rv">If the situation is urgent, the first conversation is today.</p>
-              <div className="lines rv"><b>+1 (000) 000-0000</b><span>contact@acg-domain.com</span></div>
+              <div className="lines rv"><b><a href="tel:+14048803381">+1 (404) 880-3381</a></b><span>contact@acg-domain.com</span></div>
             </div>
             <form className="rv" id="form"><input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px" }} />
               <div className="f"><label htmlFor="name">Name</label><input id="name" name="name" type="text" autoComplete="name" /></div>
               <div className="f"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" /></div>
               <div className="f"><label htmlFor="sit">The situation, in a line</label><textarea id="sit" name="situation"></textarea></div>
               <button className="go mag" type="submit">Send <i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 6h10M7 2l4 4-4 4" /></svg></i></button>
-              <p className="note" id="formnote">A partner replies within one business day.</p>
+              <p className="note" id="formnote">A managing director replies within one business day.</p>
             </form>
           </div>
         </section>

@@ -124,7 +124,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
             <div>
               <p className="big rv">If the situation is urgent, the first conversation is today.</p>
               <div className="lines rv">
-                <b>+1 (000) 000-0000</b>
+                <b><a href="tel:+14048803381">+1 (404) 880-3381</a></b>
                 <span>contact@acg-domain.com</span>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
               <div className="f"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" /></div>
               <div className="f"><label htmlFor="sit">The situation, in a line</label><textarea id="sit" name="situation"></textarea></div>
               <button className="go mag" type="submit">Send <Arrow /></button>
-              <p className="note" id="formnote">A partner replies within one business day.</p>
+              <p className="note" id="formnote">A managing director replies within one business day.</p>
             </form>
           </div>
         </section>
