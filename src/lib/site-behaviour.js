@@ -34,13 +34,15 @@ export function run() {
         st.style.opacity = String(1 - out);
       });
       hero.classList.toggle('gone', window.scrollY > vh * 0.3);
-      // the photograph holds through the first screen, then gives way to the relief
-      var img = hero.querySelector('.pimg img');
-      if (img) {
+      // frame one holds the first screen, then crossfades to the horizon plane, which stays under the document
+      var im1 = hero.querySelector('.pimg img'), im2 = hero.querySelector('.pplane img');
+      if (im1 && im2) {
         var tr = Math.max(1, hero.getBoundingClientRect().height - vh); var pg = Math.min(1, Math.max(0, window.scrollY / tr));
-        var fade = Math.min(1, Math.max(0, (pg - 0.3) / 0.45));
-        img.style.opacity = String(1 - fade);
-        img.style.transform = 'scale(' + (1.04 + pg * 0.08).toFixed(3) + ') translate3d(0,' + (pg * -24).toFixed(1) + 'px,0)';
+        var x = Math.min(1, Math.max(0, (pg - 0.25) / 0.4));
+        im1.style.opacity = String(1 - x);
+        im1.style.transform = 'scale(' + (1 + pg * 0.12).toFixed(3) + ')';
+        im2.style.opacity = String(x);
+        im2.style.transform = 'scale(' + (1.12 - x * 0.12).toFixed(3) + ') translate3d(0,' + ((1 - x) * 30).toFixed(1) + 'px,0)';
       }
     }
     dirty = false;

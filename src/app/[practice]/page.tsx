@@ -4,7 +4,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SiteScript from "@/components/SiteScript";
 import { practices, bySlug } from "@/content/practices";
-import Lattice from "@/components/Lattice";
 import "@/styles/home.css";
 import "@/styles/practice.css";
 
@@ -41,7 +40,10 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
               <source media="(max-width: 720px) and (orientation: portrait)" srcSet={p.hero.mobile} />
               <img src={p.hero.desktop} alt="" fetchPriority="high" decoding="async" />
             </picture>
-            <Lattice />
+            <picture className="pplane">
+              <source media="(max-width: 720px) and (orientation: portrait)" srcSet="/film/ai-plane-mobile.jpg" />
+              <img src="/film/ai-plane.jpg" alt="" loading="eager" decoding="async" />
+            </picture>
             <div className="pwash" />
           </div>
           <div className="pstops">
