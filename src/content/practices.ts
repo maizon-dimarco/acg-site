@@ -165,7 +165,7 @@ export const practices: Practice[] = [
     title: "Operational AI",
     headline: ["A lean team that", "sees further."],
     sub: "Agents built into the finance, operations and reporting work of the companies we run.",
-    hero: { desktop: "/film/ai-hero.jpg", mobile: "/film/ai-hero-mobile.jpg", ink: "paper", caption: "The valley at night, points of light" },
+    hero: { desktop: "/film/ai-hero.jpg", mobile: "/film/ai-hero-mobile.jpg", ink: "paper", caption: "A boardroom at night, one lamp" },
     situation: {
       statement: "The data exists. Nobody has time to look at it.",
       lead: "A turnaround runs on a handful of numbers that have to be right every week, produced by a finance team that is usually too small for the job. We build agents that do the gathering, the reconciling and the first draft of the reporting, so the people who are left spend their time on the decisions. Practical tooling, built inside the companies we run, that stays after we leave.",

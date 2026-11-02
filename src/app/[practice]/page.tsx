@@ -36,7 +36,14 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
 
       {live ? (
         <section className="phero live" data-ink="paper" id="top">
-          <div className="pfilm"><Lattice /><div className="pwash" /></div>
+          <div className="pfilm">
+            <picture className="pimg">
+              <source media="(max-width: 720px) and (orientation: portrait)" srcSet={p.hero.mobile} />
+              <img src={p.hero.desktop} alt="" fetchPriority="high" decoding="async" />
+            </picture>
+            <Lattice />
+            <div className="pwash" />
+          </div>
           <div className="pstops">
             <div className="pstop wrap" data-stop="0">
               <div className="pkick">{p.n} · {p.title}</div>

@@ -14,10 +14,10 @@ export default function Lattice() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const mobile = window.matchMedia("(max-width: 720px), (pointer: coarse)").matches;
     let renderer: THREE.WebGLRenderer;
-    try { renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: "high-performance" }); }
+    try { renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true, premultipliedAlpha: true, powerPreference: "high-performance" }); }
     catch { canvas.hidden = true; return; }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2));
-    renderer.setClearColor(0x16293b, 1);
+    renderer.setClearColor(0x000000, 0);
     const scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x16293b, 0.045);
     const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
@@ -39,8 +39,8 @@ export default function Lattice() {
         lat[i * 3] = (u - 0.5) * dist * 1.5;               // unproject with the still's field of view
         lat[i * 3 + 1] = (0.5 - v) * dist * 0.84 - 2.0;
         lat[i * 3 + 2] = -dist + 14;
-        const r = 16 + Math.random() * 12, th = Math.random() * 6.283, ph = Math.acos(2 * Math.random() - 1);
-        pos[i * 3] = r * Math.sin(ph) * Math.cos(th) * 1.3; pos[i * 3 + 1] = r * Math.cos(ph) * 0.8 + 2; pos[i * 3 + 2] = r * Math.sin(ph) * Math.sin(th) * 0.8 - 12;
+        const g = () => (Math.random() + Math.random() + Math.random()) / 1.5 - 1;   // soft bell, -1..1
+        pos[i * 3] = g() * 16 + 3; pos[i * 3 + 1] = -4 + Math.abs(g()) * 7; pos[i * 3 + 2] = g() * 9 - 4;
         seed[i] = Math.random();
         tint[i] = R.river[k] ? 2 : (Math.random() < 0.01 ? 1 : 0);
         lum[i] = R.lum[k];
@@ -89,10 +89,10 @@ export default function Lattice() {
           vec2 c = gl_PointCoord - 0.5; float r = dot(c, c); if (r > 0.25) discard;
           float soft = 1.0 - smoothstep(0.04, 0.25, r);
           float lm = pow(vLum, 1.6);
-          vec3 col = mix(uDim, uFg, (0.2 + 0.6 * vOrd) * (0.25 + 1.0 * lm));
+          vec3 col = mix(uDim, uFg, (0.25 + 0.7 * vOrd) * (0.3 + 1.1 * lm));
           if (vTint > 1.5) col = mix(col, uBlue, 0.55 + 0.45 * vOrd); else if (vTint > 0.5) col = mix(col, uRed, 0.7 + 0.3 * vOrd);
           col = mix(col, uWarm, vLit * 0.8);
-          float a = (0.2 * (1.0 - vOrd) + vOrd * (0.12 + 0.75 * lm) + 0.9 * vLit) * soft * vFade;
+          float a = (0.07 * (1.0 - vOrd) + vOrd * (0.22 + 1.1 * lm) + 0.9 * vLit) * soft * vFade;
           gl_FragColor = vec4(col, a);
         }`,
     });

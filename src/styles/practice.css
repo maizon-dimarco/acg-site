@@ -56,8 +56,10 @@ section.d.pcontact { position: relative; overflow: hidden; border-top: 0; paddin
 /* Operational AI: the live relief sits on a fixed canvas; three screens of text pass over it */
 .lattice { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
 .phero.live { height: 300vh; height: 300lvh; min-height: 0; overflow: visible; background: transparent; display: block; }
-.phero.live .pfilm { position: fixed; inset: 0; height: 100lvh; z-index: 0; }
-.phero.live .pwash { position: absolute; background: linear-gradient(to top, rgba(22,41,59,.6) 0%, rgba(22,41,59,0) 45%); }
+.phero.live .pfilm { position: fixed; inset: 0; height: 100lvh; z-index: 0; background: #0b1420; }
+.phero.live .pimg img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 45%; transform: scale(1.04); will-change: opacity, transform; }
+.phero.live .lattice { position: absolute; }
+.phero.live .pwash { position: absolute; background: linear-gradient(to top, rgba(11,20,32,.78) 0%, rgba(11,20,32,.25) 40%, rgba(11,20,32,.1) 70%, rgba(11,20,32,.45) 100%); }
 .pstops { position: relative; z-index: 1; }
 .pstop { height: 100vh; height: 100lvh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: clamp(96px, 16vh, 160px); max-width: 100%; }
 .pstop[data-stop="1"] { justify-content: center; padding-bottom: 0; }

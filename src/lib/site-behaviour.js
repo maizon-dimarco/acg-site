@@ -34,6 +34,14 @@ export function run() {
         st.style.opacity = String(1 - out);
       });
       hero.classList.toggle('gone', window.scrollY > vh * 0.3);
+      // the photograph holds through the first screen, then gives way to the relief
+      var img = hero.querySelector('.pimg img');
+      if (img) {
+        var tr = Math.max(1, hero.getBoundingClientRect().height - vh); var pg = Math.min(1, Math.max(0, window.scrollY / tr));
+        var fade = Math.min(1, Math.max(0, (pg - 0.3) / 0.45));
+        img.style.opacity = String(1 - fade);
+        img.style.transform = 'scale(' + (1.04 + pg * 0.08).toFixed(3) + ') translate3d(0,' + (pg * -24).toFixed(1) + 'px,0)';
+      }
     }
     dirty = false;
   }
