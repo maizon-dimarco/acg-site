@@ -107,9 +107,9 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
 
         <section className="d wrap paper" id="people">
           <div className="grid">
-            <div className="label">The partner</div>
+            <div className="label">The managing director</div>
             <div className="ppartner">
-              <div className="person rv"><div className="ph"></div><h3>{p.partner.name}</h3><div className="r">{p.partner.role}</div><p>{p.partner.bio}</p></div>
+              <div className="person rv"><div className={`ph ${p.partner.photo ? "has" : ""}`}>{p.partner.photo && <img src={p.partner.photo} alt={p.partner.name} loading="lazy" />}</div><h3>{p.partner.name}</h3><div className="r">{p.partner.role}</div><p>{p.partner.bio}</p></div>
               <div className="pnext rv">
                 <div className="label">Next</div>
                 <a href={`/${next.slug}`} className="nextlink"><span className="n">{next.n}</span><span className="t">{next.title}</span><Arrow /></a>

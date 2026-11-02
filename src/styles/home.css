@@ -281,3 +281,7 @@
   html.menu-open .nav .card { background: transparent; box-shadow: none; color: #F4F0E8; }
   html.menu-open .nav ul, html.menu-open .nav .right a { visibility: hidden; }
   html.menu-open .nav ul li.home { visibility: visible; }
+  .person .ph.has { background: var(--paper); }
+  .person .ph.has::after { display: none; }
+  .person .ph img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 20%; filter: saturate(.85) contrast(1.03); }
+  .ppartner .person p { max-width: 62ch; }

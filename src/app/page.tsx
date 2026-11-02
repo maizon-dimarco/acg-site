@@ -79,7 +79,7 @@ export default function Home() {
       <div>
         <h2 className="sec rv">The person on the first call is the person in the room.</h2>
         <div className="people rv mt56">
-          <div className="person"><div className="ph"></div><h3>Baker Smith</h3><div className="r">Managing Director</div><p>More than thirty years leading turnarounds and restructurings for middle-market companies and their lenders. Bio to come from Baker.</p></div>
+          <div className="person"><div className="ph has"><img src="/people/baker-smith.jpg" alt="Baker Smith" loading="lazy" /></div><h3>Baker Smith</h3><div className="r">Managing Director</div><p>Baker Smith has more than 35 years in crisis management, turnaround planning and strategic advice to owners, lenders, creditors and investors. He has led more than four hundred turnaround teams for companies from a few million to several billion dollars in revenue, serving as CEO, CRO, COO, trustee and director. A Certified Turnaround Professional, he is a past president of the Association of Certified Turnaround Professionals and a past vice president of the Turnaround Management Association. U.S. Naval Academy; MBA, Northeastern; JD, Suffolk; LLM, Georgetown.</p></div>
           <div className="person"><div className="ph"></div><h3>Managing Director name</h3><div className="r">Managing Director, Transactions</div><p>Bio to come. 150–250 words, written for a lender reading at eleven at night.</p></div>
           <div className="person"><div className="ph"></div><h3>Managing Director name</h3><div className="r">Managing Director, Operations</div><p>Bio to come. Headshots treated consistently across the three.</p></div>
         </div>
@@ -92,8 +92,8 @@ export default function Home() {
       <div className="label">Record</div>
       <div>
         <div className="figs rv">
-          <div className="fig"><div className="n">30+</div><div className="l">Years leading turnarounds</div></div>
-          <div className="fig"><div className="n">60</div><div className="l">Engagements across the middle market</div></div>
+          <div className="fig"><div className="n">35+</div><div className="l">Years in crisis management and turnarounds</div></div>
+          <div className="fig"><div className="n">400+</div><div className="l">Turnaround teams led</div></div>
           <div className="fig"><div className="n">$1.2B</div><div className="l">Debt restructured or refinanced</div></div>
         </div>
         <div className="case rv">
