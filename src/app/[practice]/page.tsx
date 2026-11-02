@@ -37,13 +37,14 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
         <section className="phero live" data-ink="paper" id="top">
           <div className="pfilm">
             <picture className="pimg">
-              <source media="(max-width: 720px) and (orientation: portrait)" srcSet={p.hero.mobile} />
-              <img src={p.hero.desktop} alt="" fetchPriority="high" decoding="async" />
+              <source media="(max-width: 720px) and (orientation: portrait)" srcSet="/film/ai-plane-mobile.jpg" />
+              <img src="/film/ai-plane.jpg" alt="" fetchPriority="high" decoding="async" />
             </picture>
             <picture className="pplane">
-              <source media="(max-width: 720px) and (orientation: portrait)" srcSet="/film/ai-plane-mobile.jpg" />
-              <img src="/film/ai-plane.jpg" alt="" loading="eager" decoding="async" />
+              <source media="(max-width: 720px) and (orientation: portrait)" srcSet={p.hero.mobile} />
+              <img src={p.hero.desktop} alt="" loading="eager" decoding="async" />
             </picture>
+            <video className="pvid" id="pvid" muted playsInline preload="auto" aria-hidden="true" data-desktop="/film/ai-desktop.mp4" data-mobile="/film/ai-mobile.mp4"></video>
             <div className="pwash" />
           </div>
           <div className="pstops">

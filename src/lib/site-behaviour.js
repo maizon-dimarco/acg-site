@@ -52,6 +52,33 @@ export function run() {
   (function loop() { if (dirty) update(); requestAnimationFrame(loop); })();
   setTimeout(function () { document.querySelectorAll('.phero:not(.live) .ln, .wh1 .ln').forEach(function (l) { l.classList.add('on'); }); }, 350);
   wireContactForm();
+  // ---------- live hero film: the whole clip as a Blob, scrubbed by the three-screen progress ----------
+  (function () {
+    var lh = document.querySelector('.phero.live'), pv = document.getElementById('pvid');
+    if (!lh || !pv || reduced) return;
+    var portrait = window.matchMedia('(orientation: portrait)').matches && window.matchMedia('(max-width: 720px), (pointer: coarse)').matches;
+    var src = portrait ? pv.getAttribute('data-mobile') : pv.getAttribute('data-desktop');
+    var ready = false, duration = 15, seeking = false, pending = null, lastT = -1, smooth = 0, last = performance.now();
+    function seekTo(t) { if (!ready) return; if (Math.abs(t - lastT) < 1 / 48) return; if (seeking) { pending = t; return; } seeking = true; lastT = t; try { pv.currentTime = t; } catch (e) { seeking = false; } }
+    function arm(url) {
+      pv.src = url;
+      pv.addEventListener('loadedmetadata', function () { duration = pv.duration || 15; }, { once: true });
+      pv.addEventListener('canplaythrough', function onCan() { pv.removeEventListener('canplaythrough', onCan); ready = true; lh.classList.add('filmed'); }, { once: false });
+      pv.addEventListener('seeked', function () { seeking = false; if (pending !== null) { var t = pending; pending = null; seekTo(t); } });
+      pv.load();
+    }
+    fetch(src, { method: 'HEAD' }).then(function (r) { if (!r.ok) throw 0; return fetch(src); }).then(function (r) { return r.blob(); }).then(function (b) { arm(URL.createObjectURL(b)); }).catch(function () { /* no film yet: the stills carry the page */ });
+    function prime() { try { pv.play().then(function () { pv.pause(); }).catch(function () {}); } catch (e) {} window.removeEventListener('touchstart', prime); window.removeEventListener('pointerdown', prime); }
+    window.addEventListener('touchstart', prime, { passive: true }); window.addEventListener('pointerdown', prime, { passive: true });
+    (function frame(now) {
+      var dt = Math.min(0.05, (now - last) / 1000); last = now;
+      var vh = window.innerHeight, tr = Math.max(1, lh.getBoundingClientRect().height - vh);
+      var progress = Math.min(1, Math.max(0, window.scrollY / tr));
+      smooth += (progress - smooth) * (1 - Math.pow(0.02, dt));
+      if (ready && !document.hidden) seekTo(smooth * Math.max(0, duration - 0.05));
+      requestAnimationFrame(frame);
+    })(performance.now());
+  })();
   // ---------- dynamic layer ----------
   (function () {
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
