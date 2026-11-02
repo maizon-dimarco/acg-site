@@ -34,24 +34,43 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
     <>
       <Nav current={p.slug} ink={p.hero.ink === "ink" ? "on-light" : "on-dark"} />
 
-      <section className={`phero ${p.hero.ink === "ink" ? "ink" : ""} ${live ? "live" : ""}`} data-ink={p.hero.ink} id="top">
-        <div className="pfilm">
-          {live ? <Lattice /> : (
+      {live ? (
+        <section className="phero live" data-ink="paper" id="top">
+          <div className="pfilm"><Lattice /><div className="pwash" /></div>
+          <div className="pstops">
+            <div className="pstop wrap" data-stop="0">
+              <div className="pkick">{p.n} · {p.title}</div>
+              <h1 className="phl"><span className="ln">A lean team</span><span className="ln">that sees further.</span></h1>
+              <p className="psub">{p.sub}</p>
+            </div>
+            <div className="pstop wrap" data-stop="1">
+              <p className="pbig"><span className="ln">The data exists.</span><span className="ln">Nobody has time to look at it.</span></p>
+            </div>
+            <div className="pstop wrap" data-stop="2">
+              <p className="pbig"><span className="ln">Agents that gather, reconcile and draft,</span><span className="ln">so people decide.</span></p>
+              <a className="go mag" href="/#contact">Discuss a situation <Arrow /></a>
+            </div>
+          </div>
+          <div className="scroll-hint">Scroll down to discover</div>
+        </section>
+      ) : (
+        <section className={`phero ${p.hero.ink === "ink" ? "ink" : ""}`} data-ink={p.hero.ink} id="top">
+          <div className="pfilm">
             <picture>
               <source media="(max-width: 720px) and (orientation: portrait)" srcSet={p.hero.mobile} />
               <img src={p.hero.desktop} alt="" fetchPriority="high" decoding="async" />
             </picture>
-          )}
-          <div className="pwash" />
-        </div>
-        <div className="ptext wrap">
-          <div className="pkick">{p.n} · {p.title}</div>
-          <h1 className="phl"><span className="ln">{p.headline[0]}</span><span className="ln">{p.headline[1]}</span></h1>
-          <p className="psub">{p.sub}</p>
-          <a className="go mag" href="/#contact">Discuss a situation <Arrow /></a>
-        </div>
-        <div className="scroll-hint">Scroll down to discover</div>
-      </section>
+            <div className="pwash" />
+          </div>
+          <div className="ptext wrap">
+            <div className="pkick">{p.n} · {p.title}</div>
+            <h1 className="phl"><span className="ln">{p.headline[0]}</span><span className="ln">{p.headline[1]}</span></h1>
+            <p className="psub">{p.sub}</p>
+            <a className="go mag" href="/#contact">Discuss a situation <Arrow /></a>
+          </div>
+          <div className="scroll-hint">Scroll down to discover</div>
+        </section>
+      )}
 
       <main className={`doc ${live ? "live-doc" : ""}`}>
         <section className="d wrap">

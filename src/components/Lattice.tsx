@@ -23,23 +23,37 @@ export default function Lattice() {
     const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
     camera.position.set(0, 0, 16);
 
-    const N = mobile ? 8000 : 24000;
-    const pos = new Float32Array(N * 3), lat = new Float32Array(N * 3), seed = new Float32Array(N), tint = new Float32Array(N);
-    const G = Math.ceil(Math.cbrt(N)), step = 1.35;
-    let i = 0;
-    for (let gx = 0; gx < G && i < N; gx++) for (let gy = 0; gy < G && i < N; gy++) for (let gz = 0; gz < G && i < N; gz++) {
-      lat[i * 3] = (gx - (G - 1) / 2) * step; lat[i * 3 + 1] = (gy - (G - 1) / 2) * step; lat[i * 3 + 2] = (gz - (G - 1) / 2) * step - 6;
-      const r = 14 + Math.random() * 10, th = Math.random() * 6.283, ph = Math.acos(2 * Math.random() - 1);
-      pos[i * 3] = r * Math.sin(ph) * Math.cos(th) * 1.2; pos[i * 3 + 1] = r * Math.cos(ph) * 0.7; pos[i * 3 + 2] = r * Math.sin(ph) * Math.sin(th) * 0.8 - 8;
-      seed[i] = Math.random();
-      const t = Math.random(); tint[i] = t < 0.012 ? 1 : (t < 0.024 ? 2 : 0);
-      i++;
-    }
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-    geo.setAttribute("aLat", new THREE.BufferAttribute(lat, 3));
-    geo.setAttribute("aSeed", new THREE.BufferAttribute(seed, 1));
-    geo.setAttribute("aTint", new THREE.BufferAttribute(tint, 1));
+    // The relief: a depth map of the valley sampled on a grid. Points reconstruct the view in 3D.
+    type Relief = { w: number; h: number; depth: number[]; lum: number[]; river: number[] };
+    let built = false; let points: THREE.Points | null = null; let geo: THREE.BufferGeometry | null = null;
+    const build = (R: Relief) => {
+      const stepU = mobile ? 2 : 1, stepV = mobile ? 2 : 1;
+      const idx: number[] = [];
+      for (let v = 0; v < R.h; v += stepV) for (let u = 0; u < R.w; u += stepU) idx.push(v * R.w + u);
+      const N = idx.length;
+      const pos = new Float32Array(N * 3), lat = new Float32Array(N * 3), seed = new Float32Array(N), tint = new Float32Array(N), lum = new Float32Array(N);
+      for (let i = 0; i < N; i++) {
+        const k = idx[i], u = (k % R.w) / (R.w - 1), v = Math.floor(k / R.w) / (R.h - 1);
+        const d = R.depth[k];                               // 1 near, 0 far
+        const dist = 7 + (1 - d) * 46;                      // distance from the original camera
+        lat[i * 3] = (u - 0.5) * dist * 1.5;               // unproject with the still's field of view
+        lat[i * 3 + 1] = (0.5 - v) * dist * 0.84 - 2.0;
+        lat[i * 3 + 2] = -dist + 14;
+        const r = 16 + Math.random() * 12, th = Math.random() * 6.283, ph = Math.acos(2 * Math.random() - 1);
+        pos[i * 3] = r * Math.sin(ph) * Math.cos(th) * 1.3; pos[i * 3 + 1] = r * Math.cos(ph) * 0.8 + 2; pos[i * 3 + 2] = r * Math.sin(ph) * Math.sin(th) * 0.8 - 12;
+        seed[i] = Math.random();
+        tint[i] = R.river[k] ? 2 : (Math.random() < 0.01 ? 1 : 0);
+        lum[i] = R.lum[k];
+      }
+      geo = new THREE.BufferGeometry();
+      geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+      geo.setAttribute("aLat", new THREE.BufferAttribute(lat, 3));
+      geo.setAttribute("aSeed", new THREE.BufferAttribute(seed, 1));
+      geo.setAttribute("aTint", new THREE.BufferAttribute(tint, 1));
+      geo.setAttribute("aLum", new THREE.BufferAttribute(lum, 1));
+      points = new THREE.Points(geo, mat); scene.add(points); built = true;
+    };
+    fetch("/film/valley-relief.json").then((r) => r.json()).then(build).catch(() => { canvas.hidden = true; });
     const uniforms = {
       uTime: { value: 0 }, uOrder: { value: 0 }, uMouse: { value: new THREE.Vector3() }, uLamp: { value: 0 },
       uPix: { value: renderer.getPixelRatio() },
@@ -49,47 +63,46 @@ export default function Lattice() {
     const mat = new THREE.ShaderMaterial({
       uniforms, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
       vertexShader: `
-        attribute vec3 aLat; attribute float aSeed; attribute float aTint;
+        attribute vec3 aLat; attribute float aSeed; attribute float aTint; attribute float aLum;
         uniform float uTime, uOrder, uLamp, uPix; uniform vec3 uMouse;
-        varying float vLit, vOrd, vTint, vFade;
+        varying float vLit, vOrd, vTint, vFade, vLum;
         void main(){
+          vLum = aLum;
           float o = smoothstep(aSeed * 0.5, aSeed * 0.5 + 0.5, uOrder);
           vec3 p = mix(position, aLat, o);
-          float wob = (1.0 - o) * 0.6 + 0.05;
+          float wob = (1.0 - o) * 0.9 + 0.04;
           p += vec3(sin(uTime * 0.6 + aSeed * 31.0), cos(uTime * 0.5 + aSeed * 17.0), sin(uTime * 0.4 + aSeed * 7.0)) * wob;
           float d = distance(p.xy, uMouse.xy);
-          float lamp = uLamp * exp(-d * d * 0.09);
+          float lamp = uLamp * exp(-d * d * 0.05);
           p = mix(p, aLat, lamp * 0.85 * (1.0 - o));
           vec4 mv = modelViewMatrix * vec4(p, 1.0);
           float depth = -mv.z;
-          vFade = smoothstep(42.0, 10.0, depth) * smoothstep(1.5, 5.0, depth);
+          vFade = (0.35 + 0.65 * smoothstep(70.0, 16.0, depth)) * smoothstep(1.0, 4.0, depth);
           vLit = lamp; vOrd = o; vTint = aTint;
-          gl_PointSize = min(26.0 * uPix, (1.3 + 1.6 * o + 2.4 * lamp + 0.6 * aSeed) * uPix * (18.0 / max(depth, 2.0)));
+          gl_PointSize = min(30.0 * uPix, (1.6 + 2.2 * o + 3.0 * lamp + 0.8 * aSeed) * uPix * (22.0 / max(depth, 2.0)) + uPix * (0.6 + 1.2 * o));
           gl_Position = projectionMatrix * mv;
         }`,
       fragmentShader: `
         uniform vec3 uFg, uDim, uRed, uBlue, uWarm;
-        varying float vLit, vOrd, vTint, vFade;
+        varying float vLit, vOrd, vTint, vFade, vLum;
         void main(){
           vec2 c = gl_PointCoord - 0.5; float r = dot(c, c); if (r > 0.25) discard;
           float soft = 1.0 - smoothstep(0.04, 0.25, r);
-          vec3 col = mix(uDim, uFg, 0.25 + 0.55 * vOrd);
-          if (vTint > 1.5) col = mix(col, uBlue, 0.7 + 0.3 * vOrd); else if (vTint > 0.5) col = mix(col, uRed, 0.7 + 0.3 * vOrd);
+          float lm = pow(vLum, 1.6);
+          vec3 col = mix(uDim, uFg, (0.2 + 0.6 * vOrd) * (0.25 + 1.0 * lm));
+          if (vTint > 1.5) col = mix(col, uBlue, 0.55 + 0.45 * vOrd); else if (vTint > 0.5) col = mix(col, uRed, 0.7 + 0.3 * vOrd);
           col = mix(col, uWarm, vLit * 0.8);
-          float a = (0.16 + 0.34 * vOrd + 0.9 * vLit) * soft * vFade;
+          float a = (0.2 * (1.0 - vOrd) + vOrd * (0.12 + 0.75 * lm) + 0.9 * vLit) * soft * vFade;
           gl_FragColor = vec4(col, a);
         }`,
     });
-    const points = new THREE.Points(geo, mat); scene.add(points);
-    const grid = new THREE.GridHelper(120, 60, 0x24364d, 0x24364d);
-    grid.position.y = -9; grid.position.z = -10; (grid.material as THREE.Material).transparent = true; (grid.material as THREE.Material).opacity = 0.3; scene.add(grid);
 
     const mouse = { nx: 0, ny: 0, on: false }, mouseS = { nx: 0, ny: 0 };
     const onMove = (e: PointerEvent) => { mouse.nx = (e.clientX / window.innerWidth) * 2 - 1; mouse.ny = -((e.clientY / window.innerHeight) * 2 - 1); mouse.on = true; };
     const onLeave = () => { mouse.on = false; };
     if (!mobile) { window.addEventListener("pointermove", onMove, { passive: true }); document.addEventListener("mouseleave", onLeave); }
 
-    const ray = new THREE.Raycaster(), plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 6), hit = new THREE.Vector3();
+    const ray = new THREE.Raycaster(); const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 6), hit = new THREE.Vector3();
     const resize = () => {
       const w = window.innerWidth, h = window.innerHeight;
       renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w < 720 ? 62 : 50; camera.updateProjectionMatrix();
@@ -97,33 +110,39 @@ export default function Lattice() {
     };
     window.addEventListener("resize", resize); resize();
 
-    const clock = new THREE.Clock(); let smooth = 0, lampS = 0, raf = 0, alive = true;
+    const clock = new THREE.Clock(); let smooth = 0, lampS = 0, raf = 0, alive = true; void built;
     const frame = () => {
       if (!alive) return;
       raf = requestAnimationFrame(frame);
       const dt = Math.min(0.05, clock.getDelta());
-      const vh = window.innerHeight; const progress = Math.min(1, Math.max(0, window.scrollY / (vh * 2.2)));
+      const vh = window.innerHeight; const hero = document.querySelector(".phero.live");
+      const travel = hero ? Math.max(1, hero.getBoundingClientRect().height - vh) : vh * 2;
+      const progress = Math.min(1, Math.max(0, window.scrollY / travel));
       const ease = 1 - Math.pow(0.004, dt);
       smooth += (progress - smooth) * ease;
       mouseS.nx += (mouse.nx - mouseS.nx) * ease * 0.6; mouseS.ny += (mouse.ny - mouseS.ny) * ease * 0.6;
       lampS += ((mouse.on ? 1 : 0) - lampS) * ease * 0.5;
-      uniforms.uOrder.value = Math.min(1, smooth * 1.25);
+      // order: nothing for the first screen, assembling through the second, complete on the third
+      const ord = Math.min(1, Math.max(0, (smooth - 0.12) / 0.6));
+      uniforms.uOrder.value = ord;
       uniforms.uTime.value += reduced ? 0 : dt;
       uniforms.uLamp.value = lampS;
       ray.setFromCamera(new THREE.Vector2(mouseS.nx, mouseS.ny), camera);
       if (ray.ray.intersectPlane(plane, hit)) uniforms.uMouse.value.copy(hit);
-      camera.position.x = mouseS.nx * 0.9; camera.position.y = mouseS.ny * 0.5; camera.position.z = 16 - smooth * 7;
-      camera.lookAt(0, 0, -6);
-      points.rotation.y = Math.sin(uniforms.uTime.value * 0.05) * 0.08 + smooth * 0.35;
-      points.rotation.x = smooth * 0.12;
-      // only draw while something of the page that shows it is on screen (the fixed canvas is always "visible")
+      // camera: high and looking down over the noise, settling to the still's own viewpoint as the valley forms
+      const t = ord;
+      camera.position.x = mouseS.nx * 1.2;
+      camera.position.y = 14 - t * 13.5 + mouseS.ny * 0.6;
+      camera.position.z = 22 - t * 6;
+      camera.lookAt(0, -2 + t * 1.5, -14);
+      if (points) { points.rotation.y = Math.sin(uniforms.uTime.value * 0.05) * 0.05 * (1 - t); }
       if (!document.hidden) renderer.render(scene, camera);
     };
     raf = requestAnimationFrame(frame);
     return () => {
       alive = false; cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize); window.removeEventListener("pointermove", onMove); document.removeEventListener("mouseleave", onLeave);
-      geo.dispose(); mat.dispose(); renderer.dispose();
+      if (geo) geo.dispose(); mat.dispose(); renderer.dispose();
     };
   }, []);
   return <canvas ref={ref} className="lattice" aria-hidden="true" />;
