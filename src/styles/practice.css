@@ -52,3 +52,12 @@ section.d.pcontact { position: relative; overflow: hidden; border-top: 0; paddin
 .pcontact .go:hover i svg { stroke: var(--paper); }
 .pcontact .note { color: var(--muted); }
 @media (max-width: 720px) { .pcontact form { padding: 28px 22px 24px; } }
+
+/* Operational AI: the live lattice sits on a fixed canvas behind the whole page */
+.lattice { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+.phero.live { background: transparent; }
+.phero.live .pfilm { position: fixed; inset: 0; z-index: 0; }
+.phero.live .pwash { position: fixed; background: linear-gradient(to top, rgba(22,41,59,.55) 0%, rgba(22,41,59,0) 40%); }
+.live-doc { background: rgba(22,41,59,.84); position: relative; z-index: 1; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); }
+.live-doc .paper { backdrop-filter: none; }
+.phero.live .ptext, .phero.live .scroll-hint { z-index: 1; }

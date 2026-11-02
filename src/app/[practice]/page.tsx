@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SiteScript from "@/components/SiteScript";
 import { practices, bySlug } from "@/content/practices";
+import Lattice from "@/components/Lattice";
 import "@/styles/home.css";
 import "@/styles/practice.css";
 
@@ -27,17 +28,20 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
   const p = bySlug((await params).practice);
   if (!p) notFound();
   const next = bySlug(p.next)!;
+  const live = p.slug === "operational-ai";
 
   return (
     <>
       <Nav current={p.slug} ink={p.hero.ink === "ink" ? "on-light" : "on-dark"} />
 
-      <section className={`phero ${p.hero.ink === "ink" ? "ink" : ""}`} data-ink={p.hero.ink} id="top">
+      <section className={`phero ${p.hero.ink === "ink" ? "ink" : ""} ${live ? "live" : ""}`} data-ink={p.hero.ink} id="top">
         <div className="pfilm">
-          <picture>
-            <source media="(max-width: 720px) and (orientation: portrait)" srcSet={p.hero.mobile} />
-            <img src={p.hero.desktop} alt="" fetchPriority="high" decoding="async" />
-          </picture>
+          {live ? <Lattice /> : (
+            <picture>
+              <source media="(max-width: 720px) and (orientation: portrait)" srcSet={p.hero.mobile} />
+              <img src={p.hero.desktop} alt="" fetchPriority="high" decoding="async" />
+            </picture>
+          )}
           <div className="pwash" />
         </div>
         <div className="ptext wrap">
@@ -49,7 +53,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
         <div className="scroll-hint">Scroll down to discover</div>
       </section>
 
-      <main className="doc">
+      <main className={`doc ${live ? "live-doc" : ""}`}>
         <section className="d wrap">
           <div className="grid">
             <div className="label">The situation</div>
