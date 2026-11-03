@@ -44,6 +44,16 @@ export function run() {
         im2.style.opacity = String(x);
         im2.style.transform = 'scale(' + (1.12 - x * 0.12).toFixed(3) + ') translate3d(0,' + ((1 - x) * 30).toFixed(1) + 'px,0)';
       }
+      // past the third screen the hero's last frame gives way to the document's own plate, which drifts with the scroll
+      var plate = hero.querySelector('.pplate'), pimg = plate && plate.querySelector('img'), film = hero.querySelector('.pfilm');
+      if (plate && pimg && film) {
+        var hb = hero.getBoundingClientRect().bottom;                      // where the document begins
+        var y = Math.min(1, Math.max(0, (vh * 0.9 - hb) / (vh * 0.7)));     // 0 on the third screen, 1 once the document owns the viewport
+        plate.style.opacity = String(y);
+        film.style.opacity = String(1 - y * 0.85);
+        var drift = (window.scrollY - (hero.getBoundingClientRect().height - vh)) * 0.06;
+        pimg.style.transform = 'translate3d(0,' + (-Math.max(0, drift) * 0.5).toFixed(1) + 'px,0) scale(' + (1 + Math.min(0.08, Math.max(0, drift) / 6000)).toFixed(3) + ')';
+      }
     }
     dirty = false;
   }

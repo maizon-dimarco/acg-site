@@ -62,6 +62,12 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
             </div>
           </div>
           <div className="scroll-hint">Scroll down to discover</div>
+          <div className="pplate" aria-hidden="true">
+            <picture>
+              <source media="(max-width: 720px) and (orientation: portrait)" srcSet="/film/ai-plate-mobile.jpg" />
+              <img src="/film/ai-plate.jpg" alt="" loading="lazy" decoding="async" />
+            </picture>
+          </div>
         </section>
       ) : (
         <section className={`phero ${p.hero.ink === "ink" ? "ink" : ""}`} data-ink={p.hero.ink} id="top">
