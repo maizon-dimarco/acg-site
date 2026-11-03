@@ -80,12 +80,30 @@ export function run() {
     fetch(src, { method: 'HEAD' }).then(function (r) { if (!r.ok) throw 0; return fetch(src); }).then(function (r) { return r.blob(); }).then(function (b) { arm(URL.createObjectURL(b)); }).catch(function () { /* no film yet: the stills carry the page */ });
     function prime() { try { pv.play().then(function () { pv.pause(); }).catch(function () {}); } catch (e) {} window.removeEventListener('touchstart', prime); window.removeEventListener('pointerdown', prime); }
     window.addEventListener('touchstart', prime, { passive: true }); window.addEventListener('pointerdown', prime, { passive: true });
+    // idle loops: when the scroll rests at the opening or the arrival, a short ambient loop takes over from the still frame
+    var loopEls = [document.getElementById('loopStart'), document.getElementById('loopEnd')];
+    var loops = [], lastScroll = performance.now(), active = null;
+    loopEls.forEach(function (el, i) {
+      if (!el) return; var u = portrait ? el.getAttribute('data-mobile') : el.getAttribute('data-desktop');
+      fetch(u, { method: 'HEAD' }).then(function (r) { if (r.ok) { el.src = u; el.load(); loops.push({ el: el, at: i, span: 0.06 }); } }).catch(function () {});
+    });
+    var plateLoop = document.getElementById('loopPlate');
+    if (plateLoop) { var pu = portrait ? plateLoop.getAttribute('data-mobile') : plateLoop.getAttribute('data-desktop'); fetch(pu, { method: 'HEAD' }).then(function (r) { if (r.ok) { plateLoop.src = pu; plateLoop.load(); plateLoop.addEventListener('canplay', function () { plateLoop.play().then(function () { plateLoop.classList.add('show'); }).catch(function () {}); }, { once: true }); } }).catch(function () {}); }
+    function setLoop(L) {
+      if (L === active) return;
+      if (active) { active.el.classList.remove('show'); var old = active; setTimeout(function () { if (active !== old) old.el.pause(); }, 1000); }
+      active = L; if (L) { try { L.el.currentTime = 0; } catch (e) {} L.el.play().then(function () { L.el.classList.add('show'); }).catch(function () {}); }
+    }
+    window.addEventListener('scroll', function () { lastScroll = performance.now(); }, { passive: true });
     (function frame(now) {
       var dt = Math.min(0.05, (now - last) / 1000); last = now;
       var vh = window.innerHeight, tr = Math.max(1, lh.getBoundingClientRect().height - vh);
       var progress = Math.min(1, Math.max(0, window.scrollY / tr));
       smooth += (progress - smooth) * (1 - Math.pow(0.02, dt));
       if (ready && !document.hidden) seekTo(smooth * Math.max(0, duration - 0.05));
+      var resting = now - lastScroll > 350 && Math.abs(progress - smooth) < 0.004, want = null;
+      if (resting) for (var i = 0; i < loops.length; i++) if (Math.abs(smooth - loops[i].at) < loops[i].span) want = loops[i];
+      setLoop(want);
       requestAnimationFrame(frame);
     })(performance.now());
   })();

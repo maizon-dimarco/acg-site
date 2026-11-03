@@ -45,6 +45,8 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
               <img src={p.hero.desktop} alt="" loading="eager" decoding="async" />
             </picture>
             <video className="pvid" id="pvid" muted playsInline preload="auto" aria-hidden="true" data-desktop="/film/ai-desktop.mp4" data-mobile="/film/ai-mobile.mp4"></video>
+            <video className="ploop" id="loopStart" muted playsInline loop preload="auto" aria-hidden="true" data-desktop="/film/ai-loop-start.mp4" data-mobile="/film/ai-loop-start-mobile.mp4"></video>
+            <video className="ploop" id="loopEnd" muted playsInline loop preload="auto" aria-hidden="true" data-desktop="/film/ai-loop-end.mp4" data-mobile="/film/ai-loop-end-mobile.mp4"></video>
             <div className="pwash" />
           </div>
           <div className="pstops">
@@ -67,6 +69,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
               <source media="(max-width: 720px) and (orientation: portrait)" srcSet="/film/ai-plate-mobile.jpg" />
               <img src="/film/ai-plate.jpg" alt="" loading="lazy" decoding="async" />
             </picture>
+            <video className="ploop plateloop" id="loopPlate" muted playsInline loop preload="none" aria-hidden="true" data-desktop="/film/ai-loop-plate.mp4" data-mobile="/film/ai-loop-plate-mobile.mp4"></video>
           </div>
         </section>
       ) : (
