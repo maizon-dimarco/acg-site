@@ -44,7 +44,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
               <source media="(max-width: 720px) and (orientation: portrait)" srcSet={f.end.mobile} />
               <img src={f.end.desktop} alt="" loading="eager" decoding="async" />
             </picture>
-            <video className="pvid" id="pvid" muted playsInline preload="auto" aria-hidden="true" data-desktop={`${f.base}-desktop.mp4`} data-mobile={`${f.base}-mobile.mp4`}></video>
+            <video className="pvid" id="pvid" muted playsInline preload="auto" aria-hidden="true" data-desktop={`${f.base}-desktop.mp4`} data-hd={`${f.base}-hd.mp4`} data-mobile={`${f.base}-mobile.mp4`}></video>
             <video className="ploop" id="loopStart" muted playsInline loop preload="auto" aria-hidden="true" data-desktop={`${f.base}-loop-start.mp4`} data-mobile={`${f.base}-loop-start-mobile.mp4`}></video>
             <video className="ploop" id="loopEnd" muted playsInline loop preload="auto" aria-hidden="true" data-desktop={`${f.base}-loop-end.mp4`} data-mobile={`${f.base}-loop-end-mobile.mp4`}></video>
             <div className="pwash" />

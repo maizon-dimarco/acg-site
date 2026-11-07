@@ -67,7 +67,10 @@ export function run() {
     var lh = document.querySelector('.phero.live'), pv = document.getElementById('pvid');
     if (!lh || !pv || reduced) return;
     var portrait = window.matchMedia('(orientation: portrait)').matches && window.matchMedia('(max-width: 720px), (pointer: coarse)').matches;
-    var src = portrait ? pv.getAttribute('data-mobile') : pv.getAttribute('data-desktop');
+    // large, sharp screens get the 2K encode when one exists; the HEAD check below falls back to 1080p
+    var big = !portrait && (window.innerWidth * (window.devicePixelRatio || 1)) >= 2200 && pv.getAttribute('data-hd');
+    var src = portrait ? pv.getAttribute('data-mobile') : (big || pv.getAttribute('data-desktop'));
+    var fallback = pv.getAttribute('data-desktop');
     var ready = false, duration = 15, seeking = false, pending = null, lastT = -1, smooth = 0, last = performance.now();
     function seekTo(t) { if (!ready) return; if (Math.abs(t - lastT) < 1 / 48) return; if (seeking) { pending = t; return; } seeking = true; lastT = t; try { pv.currentTime = t; } catch (e) { seeking = false; } }
     function arm(url) {
@@ -77,7 +80,8 @@ export function run() {
       pv.addEventListener('seeked', function () { seeking = false; if (pending !== null) { var t = pending; pending = null; seekTo(t); } });
       pv.load();
     }
-    fetch(src, { method: 'HEAD' }).then(function (r) { if (!r.ok) throw 0; return fetch(src); }).then(function (r) { return r.blob(); }).then(function (b) { arm(URL.createObjectURL(b)); }).catch(function () { /* no film yet: the stills carry the page */ });
+    function load(u) { return fetch(u, { method: 'HEAD' }).then(function (r) { if (!r.ok) throw 0; return fetch(u); }).then(function (r) { return r.blob(); }).then(function (b) { arm(URL.createObjectURL(b)); }); }
+    load(src).catch(function () { if (src !== fallback) return load(fallback).catch(function () {}); /* no film yet: the stills carry the page */ });
     function prime() { try { pv.play().then(function () { pv.pause(); }).catch(function () {}); } catch (e) {} window.removeEventListener('touchstart', prime); window.removeEventListener('pointerdown', prime); }
     window.addEventListener('touchstart', prime, { passive: true }); window.addEventListener('pointerdown', prime, { passive: true });
     // idle loops: when the scroll rests at the opening or the arrival, a short ambient loop takes over from the still frame
