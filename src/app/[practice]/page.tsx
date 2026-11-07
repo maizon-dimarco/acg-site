@@ -27,49 +27,49 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
   const p = bySlug((await params).practice);
   if (!p) notFound();
   const next = bySlug(p.next)!;
-  const live = p.slug === "operational-ai";
+  const live = !!p.film; const f = p.film;
 
   return (
     <>
       <Nav current={p.slug} ink={p.hero.ink === "ink" ? "on-light" : "on-dark"} />
 
-      {live ? (
+      {live && f ? (
         <section className="phero live" data-ink="paper" id="top">
           <div className="pfilm">
             <picture className="pimg">
-              <source media="(max-width: 720px) and (orientation: portrait)" srcSet="/film/ai-plane-mobile.jpg" />
-              <img src="/film/ai-plane.jpg" alt="" fetchPriority="high" decoding="async" />
+              <source media="(max-width: 720px) and (orientation: portrait)" srcSet={f.start.mobile} />
+              <img src={f.start.desktop} alt="" fetchPriority="high" decoding="async" />
             </picture>
             <picture className="pplane">
-              <source media="(max-width: 720px) and (orientation: portrait)" srcSet={p.hero.mobile} />
-              <img src={p.hero.desktop} alt="" loading="eager" decoding="async" />
+              <source media="(max-width: 720px) and (orientation: portrait)" srcSet={f.end.mobile} />
+              <img src={f.end.desktop} alt="" loading="eager" decoding="async" />
             </picture>
-            <video className="pvid" id="pvid" muted playsInline preload="auto" aria-hidden="true" data-desktop="/film/ai-desktop.mp4" data-mobile="/film/ai-mobile.mp4"></video>
-            <video className="ploop" id="loopStart" muted playsInline loop preload="auto" aria-hidden="true" data-desktop="/film/ai-loop-start.mp4" data-mobile="/film/ai-loop-start-mobile.mp4"></video>
-            <video className="ploop" id="loopEnd" muted playsInline loop preload="auto" aria-hidden="true" data-desktop="/film/ai-loop-end.mp4" data-mobile="/film/ai-loop-end-mobile.mp4"></video>
+            <video className="pvid" id="pvid" muted playsInline preload="auto" aria-hidden="true" data-desktop={`${f.base}-desktop.mp4`} data-mobile={`${f.base}-mobile.mp4`}></video>
+            <video className="ploop" id="loopStart" muted playsInline loop preload="auto" aria-hidden="true" data-desktop={`${f.base}-loop-start.mp4`} data-mobile={`${f.base}-loop-start-mobile.mp4`}></video>
+            <video className="ploop" id="loopEnd" muted playsInline loop preload="auto" aria-hidden="true" data-desktop={`${f.base}-loop-end.mp4`} data-mobile={`${f.base}-loop-end-mobile.mp4`}></video>
             <div className="pwash" />
           </div>
           <div className="pstops">
             <div className="pstop wrap" data-stop="0">
               <div className="pkick">{p.n} · {p.title}</div>
-              <h1 className="phl"><span className="ln">A lean team</span><span className="ln">that sees further.</span></h1>
+              <h1 className="phl"><span className="ln">{f.stops[0][0]}</span><span className="ln">{f.stops[0][1]}</span></h1>
               <p className="psub">{p.sub}</p>
             </div>
             <div className="pstop wrap" data-stop="1">
-              <p className="pbig"><span className="ln">The data exists.</span><span className="ln">Nobody has time to look at it.</span></p>
+              <p className="pbig"><span className="ln">{f.stops[1][0]}</span><span className="ln">{f.stops[1][1]}</span></p>
             </div>
             <div className="pstop wrap" data-stop="2">
-              <p className="pbig"><span className="ln">Agents that gather, reconcile and draft,</span><span className="ln">so people decide.</span></p>
+              <p className="pbig"><span className="ln">{f.stops[2][0]}</span><span className="ln">{f.stops[2][1]}</span></p>
               <a className="go mag" href="/#contact">Discuss a situation <Arrow /></a>
             </div>
           </div>
           <div className="scroll-hint">Scroll down to discover</div>
           <div className="pplate" aria-hidden="true">
             <picture>
-              <source media="(max-width: 720px) and (orientation: portrait)" srcSet="/film/ai-plate-mobile.jpg" />
-              <img src="/film/ai-plate.jpg" alt="" loading="lazy" decoding="async" />
+              <source media="(max-width: 720px) and (orientation: portrait)" srcSet={f.plate.mobile} />
+              <img src={f.plate.desktop} alt="" loading="lazy" decoding="async" />
             </picture>
-            <video className="ploop plateloop" id="loopPlate" muted playsInline loop preload="none" aria-hidden="true" data-desktop="/film/ai-loop-plate.mp4" data-mobile="/film/ai-loop-plate-mobile.mp4"></video>
+            <video className="ploop plateloop" id="loopPlate" muted playsInline loop preload="none" aria-hidden="true" data-desktop={`${f.base}-loop-plate.mp4`} data-mobile={`${f.base}-loop-plate-mobile.mp4`}></video>
           </div>
         </section>
       ) : (

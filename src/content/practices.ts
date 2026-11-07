@@ -13,6 +13,14 @@ export type Practice = {
   /** One sentence under the headline. */
   sub: string;
   hero: { desktop: string; mobile: string; ink: "paper" | "ink"; caption: string };
+  /** Optional three-screen film hero: scroll scrubs the clip from `start` to `end`; `plate` sits under the document. */
+  film?: {
+    base: string;                       // e.g. "/film/turnaround" -> -desktop.mp4, -mobile.mp4, -loop-start, -loop-end, -loop-plate
+    start: { desktop: string; mobile: string };
+    end: { desktop: string; mobile: string };
+    plate: { desktop: string; mobile: string };
+    stops: [[string, string], [string, string], [string, string]];
+  };
   situation: { statement: string; lead: string };
   work: { t: string; w: string }[];
   steps: { h: string; p: string }[];
@@ -30,6 +38,13 @@ export const practices: Practice[] = [
     headline: ["When the forecast stops", "being a formality."],
     sub: "Cash stabilized, the plan rebuilt, and one set of numbers that management, the board and the lenders can all stand behind.",
     hero: { desktop: "/film/turnaround-hero.jpg", mobile: "/film/turnaround-hero-mobile.jpg", ink: "paper", caption: "The valley under weather, the light beginning to break" },
+    film: {
+      base: "/film/turnaround",
+      start: { desktop: "/film/turnaround-hero.jpg", mobile: "/film/turnaround-hero-mobile.jpg" },
+      end: { desktop: "/film/turnaround-end.jpg", mobile: "/film/turnaround-end-mobile.jpg" },
+      plate: { desktop: "/film/turnaround-plate.jpg", mobile: "/film/turnaround-plate-mobile.jpg" },
+      stops: [["When the forecast stops", "being a formality."], ["Cash first. Then the plan.", "Then the credibility to fund it."], ["Stable in weeks.", "Believed again in months."]],
+    },
     situation: {
       statement: "Liquidity is tightening, a covenant is close, and the people who used to believe the numbers have started asking for them weekly.",
       lead: "This is the moment a lender, a board or a sponsor makes the call. We come in as operators, not observers: the managing director you speak to runs the engagement, builds the forecast with your finance team, and sits in the room with the bank. The goal is not a report. It is a business that is stable in weeks and credible again in months.",
@@ -165,7 +180,14 @@ export const practices: Practice[] = [
     title: "Operational AI",
     headline: ["A lean team that", "sees further."],
     sub: "Agents built into the finance, operations and reporting work of the companies we run.",
-    hero: { desktop: "/film/ai-hero.jpg", mobile: "/film/ai-hero-mobile.jpg", ink: "paper", caption: "A boardroom at night, one lamp" },
+    hero: { desktop: "/film/ai-hero.jpg", mobile: "/film/ai-hero-mobile.jpg", ink: "paper", caption: "Rendered light, gathering" },
+    film: {
+      base: "/film/ai",
+      start: { desktop: "/film/ai-plane.jpg", mobile: "/film/ai-plane-mobile.jpg" },
+      end: { desktop: "/film/ai-hero.jpg", mobile: "/film/ai-hero-mobile.jpg" },
+      plate: { desktop: "/film/ai-plate.jpg", mobile: "/film/ai-plate-mobile.jpg" },
+      stops: [["A lean team", "that sees further."], ["The data exists.", "Nobody has time to look at it."], ["Agents that gather, reconcile and draft,", "so people decide."]],
+    },
     situation: {
       statement: "The data exists. Nobody has time to look at it.",
       lead: "A turnaround runs on a handful of numbers that have to be right every week, produced by a finance team that is usually too small for the job. We build agents that do the gathering, the reconciling and the first draft of the reporting, so the people who are left spend their time on the decisions. Practical tooling, built inside the companies we run, that stays after we leave.",
