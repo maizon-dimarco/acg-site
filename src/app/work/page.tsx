@@ -18,11 +18,21 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <>
-      <Nav current="work" />
-      <section className="wopen wrap" id="top">
-        <div className="pkick">The record</div>
-        <h1 className="wh1"><span className="ln">Engagements across the middle market,</span><span className="ln">described the way we describe them to lenders.</span></h1>
-        <p className="wsub">The situation, what we did and what happened, as they were. {cases.length} engagements shown; more on request.</p>
+      <Nav current="work" ink="on-dark" />
+      <section className="phero" data-ink="paper" id="top">
+        <div className="pfilm">
+          <picture>
+            <source media="(max-width: 720px) and (orientation: portrait)" srcSet="/film/work-hero-mobile.jpg" />
+            <img src="/film/work-hero.jpg" alt="" fetchPriority="high" decoding="async" />
+          </picture>
+          <div className="pwash" />
+        </div>
+        <div className="ptext wrap">
+          <div className="pkick">The record</div>
+          <h1 className="phl"><span className="ln">Engagements across the middle market,</span><span className="ln">described the way we describe them to lenders.</span></h1>
+          <p className="psub">The situation, what we did and what happened, as they were. {cases.length} engagements shown; more on request.</p>
+        </div>
+        <div className="scroll-hint">Scroll down to discover</div>
       </section>
       <main className="doc">
         <section className="d wall" aria-label="Companies served">
