@@ -3,6 +3,7 @@ import HomeScript from "@/components/HomeScript";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Marquee from "@/components/Marquee";
+import Intro from "@/components/Intro";
 import "@/styles/home.css";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
     <>
 
 
+<Intro />
 <Nav />
 
 <div className="opener" id="top">

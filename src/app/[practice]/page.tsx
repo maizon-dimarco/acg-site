@@ -207,6 +207,10 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
 
         <Footer />
       </main>
+      <nav className="rail" aria-label="Practices">
+        {practices.map((q) => (<a key={q.slug} href={`/${q.slug}`} className={q.slug === p.slug ? "on" : ""} aria-current={q.slug === p.slug ? "page" : undefined}><span className="rn">{q.n}</span><span className="rt">{q.nav}</span></a>))}
+        <span className="rbar" aria-hidden="true"><i /></span>
+      </nav>
       <div className="cur" id="cur" aria-hidden="true"></div>
       <SiteScript />
     </>

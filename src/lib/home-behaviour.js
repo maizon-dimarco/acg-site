@@ -5,6 +5,12 @@ import { makeXLoop } from "@/lib/xloop";
 // it is DOM-driven animation code; the React layer only mounts it once.
 export function run() {
   wireContactForm();
+  (function () {
+    var h = document.getElementById('film'); if (!h || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(pointer: coarse)').matches) return;
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+    window.addEventListener('pointermove', function (e) { tx = (e.clientX / window.innerWidth - 0.5); ty = (e.clientY / window.innerHeight - 0.5); if (!raf) raf = requestAnimationFrame(step); }, { passive: true });
+    function step() { raf = 0; cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08; h.style.setProperty('--px', cx.toFixed(4)); h.style.setProperty('--py', cy.toFixed(4)); if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) raf = requestAnimationFrame(step); }
+  })();
 
 (function () {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

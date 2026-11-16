@@ -101,3 +101,20 @@ section.d.pcontact { position: relative; overflow: hidden; border-top: 0; paddin
 .live-doc[data-page="transactions"] { background: linear-gradient(to bottom, rgba(14,34,38,0) 0, rgba(14,34,38,.5) 50vh, rgba(14,34,38,.5)); }
 .live-doc[data-page="value-creation"] { background: linear-gradient(to bottom, rgba(26,30,20,0) 0, rgba(24,28,20,.55) 50vh, rgba(24,28,20,.55)); }
 .live-doc[data-page="interim-leadership"] { background: linear-gradient(to bottom, rgba(8,14,30,0) 0, rgba(8,14,30,.55) 50vh, rgba(8,14,30,.55)); }
+
+/* cursor parallax: the picture leans away, the words lean in. Values come from --px/--py (-0.5..0.5). */
+@media (pointer: fine) {
+  .phero .pfilm { transform: translate3d(calc(var(--px, 0) * -14px), calc(var(--py, 0) * -10px), 0) scale(1.025); will-change: transform; }
+  .phero .ptext, .phero .pstops { transform: translate3d(calc(var(--px, 0) * 8px), calc(var(--py, 0) * 6px), 0); will-change: transform; }
+  .film video, .film .xwrap { transform: translate3d(calc(var(--px, 0) * -14px), calc(var(--py, 0) * -10px), 0) scale(1.025); }
+}
+
+/* chapter rail: where you are among the five, with the page's own progress */
+.rail { position: fixed; right: max(26px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); z-index: 15; display: grid; gap: 14px; justify-items: end; white-space: nowrap; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--fg); mix-blend-mode: difference; }
+.rail a { display: grid; grid-template-columns: auto 22px; align-items: center; gap: 12px; opacity: .35; transition: opacity .4s; }
+.rail a .rt { opacity: 0; transform: translateX(6px); transition: opacity .4s, transform .4s; text-align: right; }
+.rail:hover a .rt, .rail a.on .rt { opacity: 1; transform: none; }
+.rail a:hover, .rail a.on { opacity: 1; }
+.rail .rbar { position: absolute; right: 7px; top: -18px; bottom: -18px; width: 1px; background: rgba(255,255,255,.18); }
+.rail .rbar i { position: absolute; left: 0; top: 0; width: 1px; height: calc(var(--prog, 0) * 100%); background: #fff; }
+@media (max-width: 1100px) { .rail { display: none; } }

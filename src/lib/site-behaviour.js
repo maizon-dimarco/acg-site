@@ -56,6 +56,7 @@ export function run() {
         pimg.style.transform = 'translate3d(0,' + (-Math.max(0, drift) * 0.5).toFixed(1) + 'px,0) scale(' + (1 + Math.min(0.08, Math.max(0, drift) / 6000)).toFixed(3) + ')';
       }
     }
+    var rail = document.querySelector('.rail'); if (rail) { var dh = document.documentElement.scrollHeight - window.innerHeight; rail.style.setProperty('--prog', String(Math.min(1, Math.max(0, window.scrollY / Math.max(1, dh))))); }
     dirty = false;
   }
   window.addEventListener('scroll', function () { dirty = true; }, { passive: true });
@@ -63,6 +64,13 @@ export function run() {
   (function loop() { if (dirty) update(); requestAnimationFrame(loop); })();
   setTimeout(function () { document.querySelectorAll('.phero:not(.live) .ln, .wh1 .ln').forEach(function (l) { l.classList.add('on'); }); }, 350);
   wireContactForm();
+  // cursor parallax on the hero (pointer devices only): the picture leans away from the cursor, the text toward it
+  (function () {
+    var h = document.querySelector('.phero'); if (!h || reduced || window.matchMedia('(pointer: coarse)').matches) return;
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+    window.addEventListener('pointermove', function (e) { tx = (e.clientX / window.innerWidth - 0.5); ty = (e.clientY / window.innerHeight - 0.5); if (!raf) raf = requestAnimationFrame(step); }, { passive: true });
+    function step() { raf = 0; cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08; h.style.setProperty('--px', cx.toFixed(4)); h.style.setProperty('--py', cy.toFixed(4)); if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) raf = requestAnimationFrame(step); }
+  })();
   // doorway: hand the hero's transition name to the doorway image, so it grows into the next page's hero
   document.querySelectorAll('.doorway').forEach(function (d) {
     d.addEventListener('click', function () {

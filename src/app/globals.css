@@ -80,3 +80,14 @@ html.lenis, html.lenis body { height: auto; }
 ::view-transition-group(nav) { animation: none; }
 ::view-transition-old(nav) { animation: vt-out .4s ease both; }
 ::view-transition-new(nav) { animation: vt-in .4s ease .2s both; }
+
+/* opening sequence */
+.intro { position: fixed; inset: 0; z-index: 100; background: #16293B; display: grid; place-items: center; transform: translate3d(0,0,0); }
+.intro.lift { animation: intro-lift 1s cubic-bezier(.76,0,.24,1) both; }
+.intro-mark { width: min(46vw, 420px); }
+.intro-mark img { display: block; width: 100%; height: auto; clip-path: inset(0 100% 0 0); animation: intro-wipe 1.3s cubic-bezier(.2,.7,.2,1) .25s both; }
+.intro.lift .intro-mark { animation: intro-fade .5s ease both; }
+@keyframes intro-wipe { to { clip-path: inset(0 0 0 0); } }
+@keyframes intro-lift { to { transform: translate3d(0,-100%,0); } }
+@keyframes intro-fade { to { opacity: 0; transform: translateY(-12px); } }
+html.intro-open { overflow: hidden; }
