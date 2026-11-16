@@ -25,6 +25,7 @@ export type Case = {
 export const cases: Case[] = [
   {
     slug: "pic-n-pay",
+    logo: "/logos/pic-n-pay.png",
     practice: "interim-leadership",
     company: "Pic 'n Pay",
     sector: "Retail · footwear",
@@ -37,8 +38,9 @@ export const cases: Case[] = [
   },
   {
     slug: "industrial-chemicals-us",
+    logo: "/logos/industrial-chemicals-us.png",
     practice: "turnaround",
-    company: "Industrial Chemicals (US subsidiary)",
+    company: "ICL · US subsidiary",
     sector: "Chemicals",
     context: "Engaged by the parent company",
     title: "Back to profitability in 45 days, then sold for a return on equity.",
@@ -49,6 +51,7 @@ export const cases: Case[] = [
   },
   {
     slug: "onecare",
+    logo: "/logos/onecare.png",
     practice: "turnaround",
     company: "OneCare",
     sector: "Consumer products · household",
@@ -60,6 +63,7 @@ export const cases: Case[] = [
   },
   {
     slug: "college-football-hall-of-fame",
+    logo: "/logos/college-football-hall-of-fame.png",
     practice: "turnaround",
     company: "College Football Hall of Fame",
     sector: "Non-profit · attractions",
@@ -72,6 +76,7 @@ export const cases: Case[] = [
   },
   {
     slug: "midstate-mills",
+    logo: "/logos/midstate-mills.png",
     practice: "turnaround",
     company: "Midstate Mills",
     sector: "Food manufacturing · milling",
@@ -84,6 +89,7 @@ export const cases: Case[] = [
   },
   {
     slug: "roundtree-automotive",
+    logo: "/logos/roundtree-automotive.png",
     practice: "interim-leadership",
     company: "Roundtree Automotive",
     sector: "Automotive retail",
@@ -96,6 +102,7 @@ export const cases: Case[] = [
   },
   {
     slug: "hirschfeld-steel",
+    logo: "/logos/hirschfeld-steel.png",
     practice: "interim-leadership",
     company: "Hirschfeld Steel",
     sector: "Steel fabrication",
@@ -108,6 +115,7 @@ export const cases: Case[] = [
   },
   {
     slug: "macphersons",
+    logo: "/logos/macphersons.png",
     practice: "transactions",
     company: "MacPherson's",
     sector: "Distribution · art materials",
@@ -120,6 +128,7 @@ export const cases: Case[] = [
   },
   {
     slug: "central-states-enterprises",
+    logo: "/logos/central-states-enterprises.png",
     practice: "turnaround",
     company: "Central States Enterprises",
     sector: "Agriculture · grain",
@@ -132,6 +141,7 @@ export const cases: Case[] = [
   },
   {
     slug: "johnston-textiles",
+    logo: "/logos/johnston-textiles.png",
     practice: "interim-leadership",
     company: "Johnston Textiles",
     sector: "Textiles",
@@ -180,22 +190,22 @@ export const cases: Case[] = [
   },
   {
     slug: "peanut-cooperative",
-    anonymous: true,
+    logo: "/logos/peanut-cooperative.png",
     practice: "value-creation",
-    company: "Agricultural cooperative (peanuts)",
+    company: "Coastal Growers",
     sector: "Agriculture · cooperative",
     context: "Engaged by the company for its bank group",
     title: "A 52-week cash flow that restored the banks' confidence and the working capital.",
-    situation: "The 200-farmer cooperative supplying Mars, Hershey and Skippy could not give its bank group timely, accurate reports. Unable to see the performance of the business, the banks were uncomfortable lending more, and working capital fell short.",
+    situation: "The 200-farmer peanut cooperative supplying Mars, Hershey and Skippy could not give its bank group timely, accurate reports. Unable to see the performance of the business, the banks were uncomfortable lending more, and working capital fell short.",
     action: "An American Change & Grow managing director generated a 52-week cash flow that validated the other financials.",
     outcome: "The bank group gained the confidence to increase working capital sufficient for the cooperative to operate efficiently and profitably.",
     figures: [{ n: "200", l: "Member farmers" }, { n: "52", l: "Week cash flow" }],
   },
   {
     slug: "life-sciences",
-    anonymous: true,
+    logo: "/logos/life-sciences.png",
     practice: "value-creation",
-    company: "Life sciences company",
+    company: "Cell Medica",
     sector: "Life sciences",
     context: "Strategic assessment",
     title: "A substantial portion of the investment recouped after testing stalled.",
