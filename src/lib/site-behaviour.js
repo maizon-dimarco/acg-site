@@ -56,6 +56,13 @@ export function run() {
         pimg.style.transform = 'translate3d(0,' + (-Math.max(0, drift) * 0.5).toFixed(1) + 'px,0) scale(' + (1 + Math.min(0.08, Math.max(0, drift) / 6000)).toFixed(3) + ')';
       }
     }
+    // 13-week curve: draws across as the figure comes up the viewport; events switch on as the line passes them
+    var cash = document.querySelector('.cash');
+    if (cash) {
+      var cr = cash.getBoundingClientRect(); var draw = Math.min(1, Math.max(0, (window.innerHeight * 0.88 - cr.top) / (window.innerHeight * 0.75)));
+      if (reduced) draw = cr.top < window.innerHeight ? 1 : 0;
+      if (!cash._draw || draw > cash._draw) { cash._draw = draw; cash.style.setProperty('--draw', draw.toFixed(4)); cash.querySelectorAll('.cash-ev').forEach(function (ev) { if (parseFloat(ev.style.getPropertyValue('--at')) <= draw + 0.01) ev.classList.add('on'); }); }
+    }
     var rail = document.querySelector('.rail'); if (rail) { var dh = document.documentElement.scrollHeight - window.innerHeight; rail.style.setProperty('--prog', String(Math.min(1, Math.max(0, window.scrollY / Math.max(1, dh))))); }
     dirty = false;
   }

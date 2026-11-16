@@ -6,6 +6,7 @@ import SiteScript from "@/components/SiteScript";
 import { practices, bySlug } from "@/content/practices";
 import { cases } from "@/content/cases";
 import Mark from "@/components/Mark";
+import CashCurve from "@/components/CashCurve";
 import "@/styles/home.css";
 import "@/styles/practice.css";
 
@@ -105,6 +106,19 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
             </div>
           </div>
         </section>
+
+        {p.slug === "turnaround" && (
+          <section className="d wrap" id="thirteen">
+            <div className="grid">
+              <div className="label">The first thirteen weeks</div>
+              <div>
+                <h2 className="sec rv">Cash first. Everything else is built on a forecast the bank believes.</h2>
+                <p className="lead rv">The 13-week cash flow is rebuilt from the bank statements up in the first ten days, owned by your finance team by week two, and reported every Friday without exception. It is the document the lender reads before any other.</p>
+                <CashCurve />
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="d wrap">
           <div className="grid">
