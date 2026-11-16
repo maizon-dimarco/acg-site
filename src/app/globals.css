@@ -81,3 +81,11 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes intro-lift { to { transform: translate3d(0,-100%,0); } }
 @keyframes intro-fade { to { opacity: 0; transform: translateY(-12px); } }
 html.intro-open { overflow: hidden; }
+
+/* smoother text reveals: promote the animated spans, avoid subpixel shimmer on phones */
+.ln, .wd, .rv, .pstop, .ptext { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.phl .ln, .pbig .ln, .stop .ln, .wh1 .ln { will-change: opacity, transform; }
+@media (pointer: coarse) {
+  .phl .ln, .pbig .ln { transition-duration: .7s; }
+  .wd { transition-duration: .35s; }
+}

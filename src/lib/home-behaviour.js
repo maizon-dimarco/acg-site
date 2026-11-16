@@ -56,7 +56,7 @@ export function run() {
     progress = Math.min(1, Math.max(0, -r.top / travel));
     stops.forEach(function (s, i) {
       var sr = s.getBoundingClientRect(), t = (vh * 0.9 - sr.top) / (vh * 0.55), ls = lines[i], n = ls.length;
-      for (var j = 0; j < n; j++) ls[j].classList.toggle('on', t > (j + 0.5) / n);
+      for (var j = 0; j < n; j++) if (t > (j + 0.5) / n) ls[j].classList.add('on');
     });
     rvs.forEach(function (el) { var er = el.getBoundingClientRect(); if (er.top < vh * 0.88) el.classList.add('on'); });
     // nav ink: light over the film's bright frames, light again on the paper section, dark otherwise
@@ -142,14 +142,14 @@ export function run() {
       var vh = vhh();
       if (words.length) {
         var r = st.getBoundingClientRect(), p = Math.min(1, Math.max(0, (vh * 0.82 - r.top) / (r.height + vh * 0.25)));
-        for (var i = 0; i < words.length; i++) words[i].classList.toggle('on', i / words.length < p);
+        for (var i = 0; i < words.length; i++) if (i / words.length < p) words[i].classList.add('on');
       }
       figs.forEach(function (f) { var r = f.getBoundingClientRect(); if (r.top < vh * 0.85) { f.classList.add('on'); if (!f._done && f._n) { if (reduced) f._done = true; else count(f); } } });
-      caseRows.forEach(function (row, i) { var r = row.getBoundingClientRect(); row.classList.toggle('on', r.top < vh * (0.78 - i * 0.04)); });
+      caseRows.forEach(function (row, i) { var r = row.getBoundingClientRect(); if (r.top < vh * (0.78 - i * 0.04)) row.classList.add('on'); });
       if (steps) {
         var r = steps.getBoundingClientRect(), fill = Math.min(1, Math.max(0, (vh * 0.72 - r.top) / r.height));
         steps.style.setProperty('--fill', fill.toFixed(3));
-        stepLis.forEach(function (li) { li.classList.toggle('on', fill * r.height >= li.offsetTop + 24); });
+        stepLis.forEach(function (li) { if (fill * r.height >= li.offsetTop + 24) li.classList.add('on'); });
       }
     }
     var dynDirty = true;

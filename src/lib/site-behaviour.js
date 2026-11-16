@@ -30,7 +30,7 @@ export function run() {
       var stops = hero.querySelectorAll('.pstop'); var vh = window.innerHeight;
       stops.forEach(function (st) {
         var r = st.getBoundingClientRect(); var vis = r.top < vh * 0.55;
-        st.querySelectorAll('.ln').forEach(function (l) { l.classList.toggle('on', vis); });
+        st.querySelectorAll('.ln').forEach(function (l) { if (vis) l.classList.add('on'); });
         var out = Math.min(1, Math.max(0, -r.top / (vh * 0.5)));
         st.style.opacity = String(1 - out);
       });
@@ -162,14 +162,14 @@ export function run() {
       var vh = vhh();
       if (words.length) {
         var r = st.getBoundingClientRect(), p = Math.min(1, Math.max(0, (vh * 0.82 - r.top) / (r.height + vh * 0.25)));
-        for (var i = 0; i < words.length; i++) words[i].classList.toggle('on', i / words.length < p);
+        for (var i = 0; i < words.length; i++) if (i / words.length < p) words[i].classList.add('on');
       }
       figs.forEach(function (f) { var r = f.getBoundingClientRect(); if (r.top < vh * 0.85) { f.classList.add('on'); if (!f._done && f._n) { if (reduced) f._done = true; else count(f); } } });
-      caseRows.forEach(function (row, i) { var r = row.getBoundingClientRect(); row.classList.toggle('on', r.top < vh * (0.78 - i * 0.04)); });
+      caseRows.forEach(function (row, i) { var r = row.getBoundingClientRect(); if (r.top < vh * (0.78 - i * 0.04)) row.classList.add('on'); });
       if (steps) {
         var r = steps.getBoundingClientRect(), fill = Math.min(1, Math.max(0, (vh * 0.72 - r.top) / r.height));
         steps.style.setProperty('--fill', fill.toFixed(3));
-        stepLis.forEach(function (li) { li.classList.toggle('on', fill * r.height >= li.offsetTop + 24); });
+        stepLis.forEach(function (li) { if (fill * r.height >= li.offsetTop + 24) li.classList.add('on'); });
       }
     }
     var dynDirty = true;
