@@ -26,13 +26,11 @@ export default function Lens() {
     swap(".statement", L ? L.statement : null);
     swap("#contact .big", L ? L.contact : null);
     swap(".lens-sub", L ? L.sub : null);
-    // situations: reorder the five rows
+    // situations: keep the numbered order; mark the reader's most relevant one
     const ul = document.querySelector(".sit"); if (ul) {
       const items = Array.from(ul.children) as HTMLElement[];
-      const by = (slug: string) => items.find((li) => li.querySelector("a")?.getAttribute("href") === `/${slug}`);
-      const order = L ? L.order : ["turnaround", "transactions", "value-creation", "interim-leadership", "operational-ai"];
-      ul.classList.add("reordering");
-      setTimeout(() => { order.forEach((slug) => { const li = by(slug); if (li) ul.appendChild(li); }); ul.classList.remove("reordering"); }, 260);
+      items.forEach((li) => li.classList.remove("first"));
+      if (L) { const li = items.find((el) => el.querySelector("a")?.getAttribute("href") === `/${L.order[0]}`); if (li) li.classList.add("first"); }
     }
   }
   return (

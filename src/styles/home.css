@@ -294,11 +294,14 @@
   .lens button.on { background: var(--red); border-color: var(--red); color: #fff; }
   .statement, #contact .big, .lens-sub { transition: opacity .26s ease, transform .26s ease; }
   .statement.swapping, #contact .big.swapping, .lens-sub.swapping { opacity: 0; transform: translateY(6px); }
-  .sit { transition: opacity .26s ease; }
-  .sit.reordering { opacity: 0; }
   @media (max-width: 720px) { .lens { gap: 8px; margin-bottom: 26px; } .lens-k { width: 100%; margin: 0 0 2px; } .lens button { padding: 10px 14px; } }
 
   /* the lead loop drifts in slowly while it plays, so the cloud deck and the ridge move against each other */
   .film .xwrap.show .xv { animation: lead-drift 14s ease-in-out infinite alternate; transform-origin: 50% 40%; }
   @keyframes lead-drift { from { transform: scale(1.0) translate3d(0, 0, 0); } to { transform: scale(1.07) translate3d(-1.2%, 1.5%, 0); } }
   @media (prefers-reduced-motion: reduce) { .film .xwrap.show .xv { animation: none; } }
+
+  /* the reader's most relevant situation */
+  .sit li.first .n { color: var(--red); }
+  .sit li.first .t::after { content: "Start here"; display: inline-block; margin-left: 14px; padding: 4px 9px; border: 1px solid var(--red); border-radius: 999px; color: var(--red); font-size: 9px; letter-spacing: .2em; vertical-align: middle; transform: translateY(-2px); }
+  @media (max-width: 720px) { .sit li.first .t::after { display: block; width: max-content; margin: 10px 0 0; } }
