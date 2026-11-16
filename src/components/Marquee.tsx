@@ -13,15 +13,17 @@ export default function Marquee({ label = "Companies served" }: { label?: string
     </ul>
   );
   const drum = [...list, ...list];
+  const face = 160;                                   // phone face width, matches --face in CSS
+  const r = Math.round(face / 2 / Math.tan(Math.PI / drum.length));
   return (
     <>
       <div className="mq" aria-label={label}>
         <div className="mq-track"><Row /><Row hidden /></div>
       </div>
-      <div className="wheel" aria-hidden="true" style={{ "--n": drum.length } as React.CSSProperties}>
+      <div className="wheel" aria-hidden="true" style={{ "--n": drum.length, "--r": `${r}px` } as React.CSSProperties}>
         <ul className="drum">
           {drum.map((c, i) => (
-            <li key={`${c.slug}-${i}`} style={{ "--i": i } as React.CSSProperties}>
+            <li key={`${c.slug}-${i}`} style={{ "--i": i, "--a": `${(360 / drum.length) * i}deg` } as React.CSSProperties}>
               <a href={`/work#${c.slug}`} tabIndex={-1}><Mark c={c} size="l" /></a>
             </li>
           ))}
