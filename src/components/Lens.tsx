@@ -37,7 +37,7 @@ export default function Lens() {
   }
   return (
     <div className="lens" role="group" aria-label="Reading as">
-      <span className="lens-k">Reading as</span>
+      <span className="lens-k">I am</span>
       {keys.map((k) => (
         <button key={k} type="button" className={lens === k ? "on" : ""} aria-pressed={lens === k} onClick={() => apply(lens === k ? null : k)}>{lenses[k].label}</button>
       ))}
