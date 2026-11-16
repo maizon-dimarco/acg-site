@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { wireContactForm } from "@/lib/contact-form";
+import { makeXLoop } from "@/lib/xloop";
 // Behaviour shared by the inner pages: header state, reveals, the dynamic document layer
 // (word fill, counters, case rows, step line, cursor ring, magnetic buttons) and the hero drift.
 export function run() {
@@ -84,19 +85,19 @@ export function run() {
     load(src).catch(function () { if (src !== fallback) return load(fallback).catch(function () {}); /* no film yet: the stills carry the page */ });
     function prime() { try { pv.play().then(function () { pv.pause(); }).catch(function () {}); } catch (e) {} window.removeEventListener('touchstart', prime); window.removeEventListener('pointerdown', prime); }
     window.addEventListener('touchstart', prime, { passive: true }); window.addEventListener('pointerdown', prime, { passive: true });
-    // idle loops: when the scroll rests at the opening or the arrival, a short ambient loop takes over from the still frame
+    // idle loops: when the scroll rests at the opening or the arrival, a forward-only ambient loop (seam crossfaded) takes over
     var loopEls = [document.getElementById('loopStart'), document.getElementById('loopEnd')];
     var loops = [], lastScroll = performance.now(), active = null;
     loopEls.forEach(function (el, i) {
       if (!el) return; var u = portrait ? el.getAttribute('data-mobile') : el.getAttribute('data-desktop');
-      fetch(u, { method: 'HEAD' }).then(function (r) { if (r.ok) { el.src = u; el.load(); loops.push({ el: el, at: i, span: 0.06 }); } }).catch(function () {});
+      fetch(u, { method: 'HEAD' }).then(function (r) { if (r.ok) { var X = makeXLoop(el); X.setSrc(u); loops.push({ x: X, at: i, span: 0.06 }); } }).catch(function () {});
     });
     var plateLoop = document.getElementById('loopPlate');
-    if (plateLoop) { var pu = portrait ? plateLoop.getAttribute('data-mobile') : plateLoop.getAttribute('data-desktop'); fetch(pu, { method: 'HEAD' }).then(function (r) { if (r.ok) { plateLoop.src = pu; plateLoop.load(); plateLoop.addEventListener('canplay', function () { plateLoop.play().then(function () { plateLoop.classList.add('show'); }).catch(function () {}); }, { once: true }); } }).catch(function () {}); }
+    if (plateLoop) { var pu = portrait ? plateLoop.getAttribute('data-mobile') : plateLoop.getAttribute('data-desktop'); fetch(pu, { method: 'HEAD' }).then(function (r) { if (r.ok) { var PX = makeXLoop(plateLoop); PX.setSrc(pu); plateLoop.addEventListener('canplay', function () { PX.play(); PX.show(); }, { once: true }); } }).catch(function () {}); }
     function setLoop(L) {
       if (L === active) return;
-      if (active) { active.el.classList.remove('show'); var old = active; setTimeout(function () { if (active !== old) old.el.pause(); }, 1000); }
-      active = L; if (L) { try { L.el.currentTime = 0; } catch (e) {} L.el.play().then(function () { L.el.classList.add('show'); }).catch(function () {}); }
+      if (active) { active.x.hide(); var old = active; setTimeout(function () { if (active !== old) old.x.pause(); }, 1000); }
+      active = L; if (L) { L.x.play(); L.x.show(); }
     }
     window.addEventListener('scroll', function () { lastScroll = performance.now(); }, { passive: true });
     (function frame(now) {

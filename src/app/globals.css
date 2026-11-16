@@ -11,3 +11,10 @@
 }
 
 html { background: var(--navy-deep); }
+
+/* crossfade loops: the wrapper fades as a whole, the two videos inside hide the seam */
+.xwrap { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; pointer-events: none; overflow: hidden; }
+.xwrap.show { opacity: 1; }
+.xwrap .xv { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
+.film .xwrap { z-index: 1; }
+.pplate .xwrap.plateloop { inset: -5%; width: 110%; height: 110%; }
