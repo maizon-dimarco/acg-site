@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SiteScript from "@/components/SiteScript";
 import { practices, bySlug } from "@/content/practices";
+import { cases } from "@/content/cases";
 import "@/styles/home.css";
 import "@/styles/practice.css";
 
@@ -27,6 +28,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
   const p = bySlug((await params).practice);
   if (!p) notFound();
   const next = bySlug(p.next)!;
+  const rec = cases.find((c) => c.practice === p.slug);
   const live = !!p.film; const f = p.film;
 
   return (
@@ -142,6 +144,11 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
                   <div className="row"><dt>Outcome</dt><dd>{p.engagement.outcome}</dd></div>
                 </dl>
               </div>
+              {rec && (
+                <div className="figs rv mt48">
+                  {rec.figures.map((f) => (<div className="fig" key={f.l}><div className="n">{f.n}</div><div className="l">{f.l}</div></div>))}
+                </div>
+              )}
               <p className="note rv mt20">Engagement details are illustrative until the firm&apos;s record is supplied. <a href="/work" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>All engagements</a></p>
             </div>
           </div>
