@@ -1,5 +1,6 @@
 import { cases } from "@/content/cases";
 import Mark from "@/components/Mark";
+import MarqueeGuard from "@/components/MarqueeGuard";
 
 /**
  * Client marks. Desktop: a slow flat drift (two copies of the row make the loop seamless).
@@ -29,6 +30,7 @@ export default function Marquee({ label = "Companies served" }: { label?: string
           ))}
         </ul>
       </div>
+      <MarqueeGuard />
     </>
   );
 }
