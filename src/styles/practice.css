@@ -26,7 +26,7 @@
 
 /* partner + next */
 .ppartner { display: grid; gap: 48px; grid-template-columns: minmax(0, 1fr); max-width: 1180px; }
-@media (min-width: 900px) { .ppartner { grid-template-columns: minmax(0, 1fr) 320px; align-items: end; } }
+@media (min-width: 900px) { .ppartner { grid-template-columns: minmax(0, 1fr); } }
 .ppartner .person { max-width: 420px; }
 .pnext .label { padding-top: 0; margin-bottom: 18px; }
 .nextlink { display: grid; grid-template-columns: 40px minmax(0, 1fr) 30px; align-items: center; gap: 16px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -80,3 +80,23 @@ section.d.pcontact { position: relative; overflow: hidden; border-top: 0; paddin
 .pplate img { position: absolute; inset: -5%; width: 110%; height: 110%; max-width: none; object-fit: cover; object-position: 50% 50%; will-change: transform; }
 .live-doc { background: linear-gradient(to bottom, rgba(11,20,32,0) 0, rgba(11,20,32,.45) 50vh, rgba(11,20,32,.45)); position: relative; z-index: 1; }
 .live-doc .paper { position: relative; }
+
+/* doorway: the next practice as a band you walk into */
+.doorway { position: relative; display: block; height: 62vh; min-height: 420px; overflow: hidden; isolation: isolate; color: var(--fg); background: #0b1420; }
+.dw-img img { position: absolute; inset: -6%; width: 112%; height: 112%; max-width: none; object-fit: cover; transform: scale(1.02); transition: transform 1.6s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+.doorway:hover .dw-img img { transform: scale(1.08); }
+.dw-wash { position: absolute; inset: 0; background: linear-gradient(to right, rgba(11,20,32,.78) 0%, rgba(11,20,32,.35) 55%, rgba(11,20,32,.15) 100%); transition: opacity .8s; }
+.doorway:hover .dw-wash { opacity: .8; }
+.dw-text { position: absolute; left: 0; right: 0; bottom: clamp(48px, 8vh, 96px); z-index: 1; max-width: 100%; }
+.dw-title { font-family: var(--serif); font-size: clamp(1.7rem, 3.6vw, 3.2rem); line-height: 1.1; max-width: 22ch; text-wrap: balance; text-shadow: 0 2px 30px rgba(8,11,16,.5); }
+.dw-go { margin-top: 22px; display: inline-flex; align-items: center; gap: 14px; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; }
+.dw-go i { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(244,240,232,.5); display: grid; place-items: center; transition: transform .5s, background .4s; }
+.dw-go i svg { width: 11px; height: 11px; }
+.doorway:hover .dw-go i { transform: translateX(8px); background: rgba(244,240,232,.12); }
+@media (max-width: 720px) { .doorway { height: 70vh; } }
+
+/* per-page colour casts under the document */
+.live-doc[data-page="turnaround"] { background: linear-gradient(to bottom, rgba(16,30,38,0) 0, rgba(16,30,38,.5) 50vh, rgba(16,30,38,.5)); }
+.live-doc[data-page="transactions"] { background: linear-gradient(to bottom, rgba(14,34,38,0) 0, rgba(14,34,38,.5) 50vh, rgba(14,34,38,.5)); }
+.live-doc[data-page="value-creation"] { background: linear-gradient(to bottom, rgba(26,30,20,0) 0, rgba(24,28,20,.55) 50vh, rgba(24,28,20,.55)); }
+.live-doc[data-page="interim-leadership"] { background: linear-gradient(to bottom, rgba(8,14,30,0) 0, rgba(8,14,30,.55) 50vh, rgba(8,14,30,.55)); }

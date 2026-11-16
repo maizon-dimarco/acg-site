@@ -20,6 +20,16 @@ export const metadata: Metadata = {
   description:
     "A senior-led turnaround and restructuring firm. Turnaround, refinancing and M&A, value creation, interim leadership and operational AI for middle-market companies and their lenders.",
   icons: { icon: "/brand/acg-favicon.svg" },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://acg-site-virid.vercel.app"),
+  openGraph: {
+    type: "website",
+    siteName: "American Change & Grow",
+    title: "American Change & Grow — Turnaround & Restructuring",
+    description: "A senior-led turnaround and restructuring firm for middle-market companies and their lenders.",
+    images: [{ url: "/og.jpg", width: 1200, height: 630 }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og.jpg"] },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {

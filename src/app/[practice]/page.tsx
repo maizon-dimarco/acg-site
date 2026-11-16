@@ -91,7 +91,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
         </section>
       )}
 
-      <main className={`doc ${live ? "live-doc" : ""}`}>
+      <main className={`doc ${live ? "live-doc" : ""}`} data-page={p.slug}>
         <section className="d wrap">
           <div className="grid">
             <div className="label">The situation</div>
@@ -152,13 +152,22 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
             <div className="label">The managing director</div>
             <div className="ppartner">
               <div className="person rv"><div className={`ph ${p.partner.photo ? "has" : ""}`}>{p.partner.photo && <img src={p.partner.photo} alt={p.partner.name} loading="lazy" />}</div><h3>{p.partner.name}</h3><div className="r">{p.partner.role}</div><p>{p.partner.bio}</p></div>
-              <div className="pnext rv">
-                <div className="label">Next</div>
-                <a href={`/${next.slug}`} className="nextlink"><span className="n">{next.n}</span><span className="t">{next.title}</span><Arrow /></a>
-              </div>
             </div>
           </div>
         </section>
+
+        <a className="doorway rv" href={`/${next.slug}`} aria-label={`Next: ${next.title}`}>
+          <picture className="dw-img">
+            <source media="(max-width: 720px) and (orientation: portrait)" srcSet={next.film ? next.film.end.mobile : next.hero.mobile} />
+            <img src={next.film ? next.film.end.desktop : next.hero.desktop} alt="" loading="lazy" decoding="async" />
+          </picture>
+          <div className="dw-wash" />
+          <div className="dw-text wrap">
+            <div className="pkick">Next · {next.n}</div>
+            <div className="dw-title">{next.film ? next.film.stops[0].join(" ") : next.headline.join(" ")}</div>
+            <div className="dw-go">{next.title} <Arrow /></div>
+          </div>
+        </a>
 
         <section className="d wrap pcontact" id="contact">
           <div className="pcbg" aria-hidden="true"><img src="/film/dusk.jpg" alt="" loading="lazy" decoding="async" /><div className="wash" /></div>

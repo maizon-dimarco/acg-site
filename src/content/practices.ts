@@ -79,6 +79,13 @@ export const practices: Practice[] = [
     headline: ["A facility is maturing.", "A sale may be the answer."],
     sub: "We run the process and negotiate terms the business can live with, on the lender's timeline and the owner's.",
     hero: { desktop: "/film/transactions-hero.jpg", mobile: "/film/transactions-hero-mobile.jpg", ink: "paper", caption: "Two rivers meeting" },
+    film: {
+      base: "/film/transactions",
+      start: { desktop: "/film/transactions-hero.jpg", mobile: "/film/transactions-hero-mobile.jpg" },
+      end: { desktop: "/film/transactions-end.jpg", mobile: "/film/transactions-end-mobile.jpg" },
+      plate: { desktop: "/film/transactions-plate.jpg", mobile: "/film/transactions-plate-mobile.jpg" },
+      stops: [["A facility is maturing.", "A sale may be the answer."], ["Two processes, run in parallel,", "so neither is the only option."], ["Terms the business can live with,", "on the lender's timeline and the owner's."]],
+    },
     situation: {
       statement: "The capital structure no longer fits the business, and the people across the table know it.",
       lead: "A refinancing has stalled, a sale has fallen through, or a maturity is coming with no package prepared. These are the moments a restructuring advisor is brought in. These situations reward preparation and punish surprise. We build the case before the first meeting, run the process at the pace the situation demands, and sit across the table from lenders and buyers as people who have been on their side of it.",
@@ -112,6 +119,13 @@ export const practices: Practice[] = [
     headline: ["The business is sound.", "The margin isn't."],
     sub: "The operating improvements that are already there, found with your team and put into the P&L, on a timeline the numbers support.",
     hero: { desktop: "/film/value-hero.jpg", mobile: "/film/value-hero-mobile.jpg", ink: "paper", caption: "The valley in full sun" },
+    film: {
+      base: "/film/value",
+      start: { desktop: "/film/value-hero.jpg", mobile: "/film/value-hero-mobile.jpg" },
+      end: { desktop: "/film/value-end.jpg", mobile: "/film/value-end-mobile.jpg" },
+      plate: { desktop: "/film/value-plate.jpg", mobile: "/film/value-plate-mobile.jpg" },
+      stops: [["The business is sound.", "The margin isn't."], ["The improvements are already there.", "They have to be found, and put into the P&L."], ["Found with your team,", "on a timeline the numbers support."]],
+    },
     situation: {
       statement: "Revenue is fine. Everything underneath it has drifted.",
       lead: "Pricing that hasn't moved in three years, a cost base built for a bigger company, working capital tied up where nobody is looking. None of it is dramatic and all of it is money. We find it with your team, rank it by what it is worth against what it takes, and start putting the top of the list into the numbers before the next board meeting.",
@@ -145,6 +159,13 @@ export const practices: Practice[] = [
     headline: ["The seat needs", "an operator now."],
     sub: "Interim CEO, CRO, CFO or COO with authority to act, in the seat until the business is handed back in better order.",
     hero: { desktop: "/film/interim-hero.jpg", mobile: "/film/interim-hero-mobile.jpg", ink: "paper", caption: "The one lit house at dusk" },
+    film: {
+      base: "/film/interim",
+      start: { desktop: "/film/interim-hero.jpg", mobile: "/film/interim-hero-mobile.jpg" },
+      end: { desktop: "/film/interim-end.jpg", mobile: "/film/interim-end-mobile.jpg" },
+      plate: { desktop: "/film/interim-plate.jpg", mobile: "/film/interim-plate-mobile.jpg" },
+      stops: [["The seat needs", "an operator now."], ["Authority to act.", "Not advice from the side of the room."], ["In the seat until the business", "is handed back in better order."]],
+    },
     situation: {
       statement: "Someone has to run this, this week, with the authority to decide.",
       lead: "A CFO has left in the middle of a refinancing. The board no longer trusts the forecast and needs a name on it. A sponsor wants an operator in the building before it funds. We take the seat, not the adjacent one: a partner with the title, the authority and the accountability, for as long as the situation needs and no longer.",
