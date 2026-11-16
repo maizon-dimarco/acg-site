@@ -297,3 +297,8 @@
   .sit { transition: opacity .26s ease; }
   .sit.reordering { opacity: 0; }
   @media (max-width: 720px) { .lens { gap: 8px; margin-bottom: 26px; } .lens-k { width: 100%; margin: 0 0 2px; } .lens button { padding: 10px 14px; } }
+
+  /* the lead loop drifts in slowly while it plays, so the cloud deck and the ridge move against each other */
+  .film .xwrap.show .xv { animation: lead-drift 14s ease-in-out infinite alternate; transform-origin: 50% 40%; }
+  @keyframes lead-drift { from { transform: scale(1.0) translate3d(0, 0, 0); } to { transform: scale(1.07) translate3d(-1.2%, 1.5%, 0); } }
+  @media (prefers-reduced-motion: reduce) { .film .xwrap.show .xv { animation: none; } }

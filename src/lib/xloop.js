@@ -3,13 +3,13 @@
 // and the second one fades in over the last `fade` seconds of the first, then they swap.
 // Returns { el, play, pause, show, hide } where `el` is the original element (kept for layout/classes).
 export function makeXLoop(el, opts) {
-  var fade = (opts && opts.fade) || 0.9;
+  var fade = (opts && opts.fade) || 0.9, rate = (opts && opts.rate) || 1;
   // wrapper takes the element's classes (so existing show/hide CSS keeps working); the two videos inside only handle the seam
   var wrap = document.createElement('div'); wrap.className = el.className + ' xwrap';
   el.parentNode.insertBefore(wrap, el); wrap.appendChild(el);
   var twin = el.cloneNode(false); twin.removeAttribute('id'); wrap.appendChild(twin);
   var vids = [el, twin], cur = 0, running = false, raf = 0, shown = true;
-  vids.forEach(function (v) { v.className = 'xv'; v.loop = false; v.muted = true; v.playsInline = true; v.style.opacity = '0'; });
+  vids.forEach(function (v) { v.className = 'xv'; v.loop = false; v.muted = true; v.playsInline = true; v.style.opacity = '0'; v.defaultPlaybackRate = rate; v.playbackRate = rate; });
   function setSrc(u) { vids.forEach(function (v) { if (v.src !== u) { v.src = u; v.load(); } }); }
   if (el.src) setSrc(el.src);
   function tick() {

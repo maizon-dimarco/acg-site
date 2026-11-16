@@ -40,7 +40,7 @@ export function run() {
   window.addEventListener('touchstart', prime, { passive: true }); window.addEventListener('pointerdown', prime, { passive: true });
 
   // idle loops at the opening and the arrival
-  var loops = [ { x: makeXLoop(document.getElementById('loopOpen')), at: 0, span: 0.06 }, { x: makeXLoop(document.getElementById('loopWater')), at: 1, span: 0.08 } ], activeLoop = null;
+  var loops = [ { x: makeXLoop(document.getElementById('loopOpen'), { rate: 1.6, fade: 1.2 }), at: 0, span: 0.06 }, { x: makeXLoop(document.getElementById('loopWater')), at: 1, span: 0.08 } ], activeLoop = null;
   function setLoop(L) {
     if (L === activeLoop) return;
     if (activeLoop) { activeLoop.x.hide(); var old = activeLoop; setTimeout(function () { if (activeLoop !== old) old.x.pause(); }, 900); }
