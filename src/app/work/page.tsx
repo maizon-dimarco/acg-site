@@ -21,12 +21,11 @@ export default function WorkPage() {
       <section className="wopen wrap" id="top">
         <div className="pkick">The record</div>
         <h1 className="wh1"><span className="ln">Engagements across the middle market,</span><span className="ln">described the way we describe them to lenders.</span></h1>
-        <p className="wsub">Names withheld; the situation, what we did and what happened are as they were. {cases.length} engagements shown; more on request.</p>
+        <p className="wsub">The situation, what we did and what happened, as they were. {cases.length} engagements shown; more on request.</p>
       </section>
       <main className="doc">
         <section className="d wrap wsec">
           <WorkList />
-          <p className="note mt20">Cases are illustrative placeholders until the firm&apos;s record is supplied.</p>
         </section>
         <section className="d wrap pcontact" id="contact">
           <div className="pcbg" aria-hidden="true"><img src="/film/dusk.jpg" alt="" loading="lazy" decoding="async" /><div className="wash" /></div>

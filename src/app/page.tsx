@@ -97,14 +97,14 @@ export default function Home() {
           <div className="fig"><div className="n">$1.2B</div><div className="l">Debt restructured or refinanced</div></div>
         </div>
         <div className="case rv">
-          <div className="ctx">Recent engagement · Distribution · $45M revenue · PE-backed</div>
+          <div className="ctx">Hirschfeld Steel · Steel fabrication · Chief Restructuring Officer</div>
           <dl>
-            <div className="row"><dt>Situation</dt><dd>Covenant default after two quarters of margin erosion. Lender had lost confidence in the forecast; sponsor was weighing whether to fund.</dd></div>
-            <div className="row"><dt>Action</dt><dd>Rebuilt the 13-week cash forecast in ten days, renegotiated the facility with a 90-day standstill, took the interim CFO seat and reset pricing on the bottom third of accounts.</dd></div>
-            <div className="row"><dt>Outcome</dt><dd>Positive cash in week seven. Facility amended and extended at month four. Sponsor funded the plan; management retained.</dd></div>
+            <div className="row"><dt>Situation</dt><dd>Founded in 1962, the multi-state fabricator of major-league stadiums, iconic bridges and landmark office buildings defaulted on its bank loans when the economy turned.</dd></div>
+            <div className="row"><dt>Action</dt><dd>An American Change &amp; Grow managing director was appointed Chief Restructuring Officer. A 13-week cash flow controlled operations while the turnaround plan was executed, the company recapitalized and its debt restructured.</dd></div>
+            <div className="row"><dt>Outcome</dt><dd>With the business stabilized and profitability restored, a going-concern sale was achieved with a substantial return to the owners.</dd></div>
           </dl>
         </div>
-        <p className="note rv mt20">Figures and case are illustrative placeholders until Baker supplies the firm's record.</p>
+        <p className="note rv mt20"><a href="/work" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>Fifteen engagements, from Pic &apos;n Pay to Rubie&apos;s Costume Company</a></p>
       </div>
     </div>
   </section>

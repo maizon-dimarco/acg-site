@@ -29,6 +29,7 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
   if (!p) notFound();
   const next = bySlug(p.next)!;
   const rec = cases.find((c) => c.practice === p.slug);
+  const recCount = cases.filter((c) => c.practice === p.slug).length;
   const live = !!p.film; const f = p.film;
 
   return (
@@ -136,20 +137,26 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
           <div className="grid">
             <div className="label">Record</div>
             <div>
-              <div className="case rv top">
-                <div className="ctx">{p.engagement.ctx}</div>
-                <dl>
-                  <div className="row"><dt>Situation</dt><dd>{p.engagement.situation}</dd></div>
-                  <div className="row"><dt>Action</dt><dd>{p.engagement.action}</dd></div>
-                  <div className="row"><dt>Outcome</dt><dd>{p.engagement.outcome}</dd></div>
-                </dl>
-              </div>
-              {rec && (
-                <div className="figs rv mt48">
-                  {rec.figures.map((f) => (<div className="fig" key={f.l}><div className="n">{f.n}</div><div className="l">{f.l}</div></div>))}
-                </div>
+              {rec ? (
+                <>
+                  <div className="case rv top">
+                    <div className="ctx">{rec.company} · {rec.sector} · {rec.context}</div>
+                    <dl>
+                      <div className="row"><dt>Situation</dt><dd>{rec.situation}</dd></div>
+                      <div className="row"><dt>Action</dt><dd>{rec.action}</dd></div>
+                      <div className="row"><dt>Outcome</dt><dd>{rec.outcome}</dd></div>
+                    </dl>
+                  </div>
+                  {rec.figures && rec.figures.length > 0 && (
+                    <div className="figs rv mt48">
+                      {rec.figures.map((f) => (<div className="fig" key={f.l}><div className="n">{f.n}</div><div className="l">{f.l}</div></div>))}
+                    </div>
+                  )}
+                  <p className="note rv mt20"><a href="/work" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>All engagements</a>{recCount > 1 ? ` · ${recCount} in this practice` : ""}</p>
+                </>
+              ) : (
+                <p className="lead rv">The firm&apos;s record in this practice is building. <a href="/work" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>See all engagements</a>.</p>
               )}
-              <p className="note rv mt20">Engagement details are illustrative until the firm&apos;s record is supplied. <a href="/work" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>All engagements</a></p>
             </div>
           </div>
         </section>
