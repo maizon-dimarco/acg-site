@@ -71,7 +71,7 @@ export function run() {
   function luma(x0, y0, x1, y1) { var d = pctx.getImageData(x0, y0, x1 - x0, y1 - y0).data, s = 0; for (var i = 0; i < d.length; i += 4) s += 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]; return s / (d.length / 4) / 255; }
   function probeFrame(now) {
     if (now - lastProbe < 160) return; lastProbe = now;
-    var el = (activeLoop && activeLoop.el.readyState >= 2) ? activeLoop.el : ((ready && vid.readyState >= 2) ? vid : null); if (!el) return;
+    var el = (activeLoop && activeLoop.x.el.readyState >= 2) ? activeLoop.x.el : ((ready && vid.readyState >= 2) ? vid : null); if (!el) return;
     var sw = el.videoWidth, sh = el.videoHeight; if (!sw || !sh) return;
     var vw = window.innerWidth, vh = window.innerHeight, scale = Math.max(vw / sw, vh / sh), cw = vw / scale, ch = vh / scale;
     try { pctx.drawImage(el, (sw - cw) / 2, (sh - ch) / 2, cw, ch, 0, 0, probe.width, probe.height); } catch (e) { return; }
