@@ -128,7 +128,6 @@ export const cases: Case[] = [
   },
   {
     slug: "central-states-enterprises",
-    logo: "/logos/central-states-enterprises.png",
     practice: "turnaround",
     company: "Central States Enterprises",
     sector: "Agriculture · grain",

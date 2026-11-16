@@ -21,3 +21,29 @@ html { background: var(--navy-deep); }
 
 /* any ampersand left in display text (e.g. "M&A") uses the plain form, not the swash */
 .amp, .phl, .pkick, .sec, .statement, .dw-title, .menu .t, .sit .t { font-variation-settings: "SOFT" 40, "WONK" 0; }
+
+/* client marks: one monochrome treatment whether we have the logo or only the name */
+.mark { display: inline-flex; align-items: center; color: var(--fg); }
+.mark.img img { display: block; width: auto; max-width: 100%; object-fit: contain; opacity: .92; }
+.mark.type { font-family: var(--serif); font-weight: 400; letter-spacing: .01em; line-height: 1.1; text-wrap: balance; }
+.mark.s.img img { height: 22px; } .mark.s.type { font-size: 1.05rem; letter-spacing: .12em; text-transform: uppercase; font-family: inherit; }
+.mark.m.img img { height: 32px; } .mark.m.type { font-size: 1.5rem; }
+.mark.l.img img { height: 44px; max-width: 220px; } .mark.l.type { font-size: clamp(1.25rem, 1.7vw, 1.6rem); }
+.wall { padding-block: 90px 70px; }
+.wall .pkick { margin-bottom: 36px; }
+/* marquee */
+.mq { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+.mq-track { display: flex; width: max-content; animation: mq 70s linear infinite; }
+.mq:hover .mq-track { animation-play-state: paused; }
+.mq-row { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(56px, 6vw, 110px); padding-right: clamp(56px, 6vw, 110px); }
+.mq-row li { flex: none; }
+.mq-row a { display: flex; align-items: center; height: 72px; opacity: .55; transition: opacity .4s; }
+.mq-row a:hover { opacity: 1; }
+@keyframes mq { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+@media (prefers-reduced-motion: reduce) { .mq-track { animation: none; } .mq { mask-image: none; -webkit-mask-image: none; } .mq-row { flex-wrap: wrap; gap: 32px 48px; } .mq-row[aria-hidden] { display: none; } }
+/* mark sizing on the drift: badges tall, wordmarks wide, all about the same visual weight */
+.mq .mark.l.img img { height: 48px; max-width: 190px; }
+.mq .mark.l.img.sq img { height: 64px; }
+@media (max-width: 720px) { .mq-row a { height: 56px; } .mq .mark.l.img img { height: 36px; max-width: 140px; } .mq .mark.l.img.sq img { height: 50px; } .mq-track { animation-duration: 45s; } }
+
+section.d.mqsec { padding-block: 80px 90px; }

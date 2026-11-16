@@ -3,7 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SiteScript from "@/components/SiteScript";
 import WorkList from "@/components/WorkList";
-import Mark from "@/components/Mark";
+import Marquee from "@/components/Marquee";
 import { cases } from "@/content/cases";
 import "@/styles/home.css";
 import "@/styles/practice.css";
@@ -25,11 +25,9 @@ export default function WorkPage() {
         <p className="wsub">The situation, what we did and what happened, as they were. {cases.length} engagements shown; more on request.</p>
       </section>
       <main className="doc">
-        <section className="d wrap wall" aria-label="Companies served">
-          <div className="pkick">Companies served</div>
-          <ul className="marks">
-            {cases.filter((c) => !c.anonymous).map((c) => (<li key={c.slug}><a href={`#${c.slug}`}><Mark c={c} size="l" /></a></li>))}
-          </ul>
+        <section className="d wall" aria-label="Companies served">
+          <div className="wrap"><div className="pkick">Companies served</div></div>
+          <Marquee />
         </section>
         <section className="d wrap wsec">
           <WorkList />

@@ -2,6 +2,7 @@ import Lockup from "@/components/Lockup";
 import HomeScript from "@/components/HomeScript";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Marquee from "@/components/Marquee";
 import "@/styles/home.css";
 
 export default function Home() {
@@ -107,6 +108,11 @@ export default function Home() {
         <p className="note rv mt20"><a href="/work" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>Fifteen engagements, from Pic &apos;n Pay to Rubie&apos;s Costume Company</a></p>
       </div>
     </div>
+  </section>
+
+  <section className="d mqsec" aria-label="Companies served">
+    <div className="wrap"><div className="label" style={{ position: "static", paddingTop: 0, marginBottom: 36 }}>Companies served</div></div>
+    <Marquee />
   </section>
 
   <section className="d wrap" id="how">
