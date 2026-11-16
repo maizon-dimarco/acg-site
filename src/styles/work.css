@@ -38,3 +38,19 @@
 .wlink i { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: background .3s; }
 .wlink i svg { width: 11px; height: 11px; } .wlink:hover i { background: var(--fg); } .wlink:hover i svg { stroke: var(--bg); }
 @media (prefers-reduced-motion: reduce) { .wbody, .wplus, .wh1 .ln { transition: none; } .wh1 .ln { opacity: 1; transform: none; } }
+
+/* client marks: one monochrome treatment whether we have the logo or only the name */
+.mark { display: inline-flex; align-items: center; color: var(--fg); }
+.mark.img img { display: block; width: auto; max-width: 100%; object-fit: contain; opacity: .92; }
+.mark.type { font-family: var(--serif); font-weight: 400; letter-spacing: .01em; line-height: 1.1; text-wrap: balance; }
+.mark.s.img img { height: 22px; } .mark.s.type { font-size: 1.05rem; letter-spacing: .12em; text-transform: uppercase; font-family: inherit; }
+.mark.m.img img { height: 32px; } .mark.m.type { font-size: 1.5rem; }
+.mark.l.img img { height: 44px; max-width: 220px; } .mark.l.type { font-size: clamp(1.25rem, 1.7vw, 1.6rem); }
+.wall .pkick { margin-bottom: 28px; }
+.marks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.marks li { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.marks a { display: flex; align-items: center; justify-content: center; min-height: 130px; padding: 24px; text-align: center; opacity: .62; transition: opacity .4s, background .4s; }
+.marks a:hover { opacity: 1; background: rgba(244,240,232,.03); }
+.recmark { margin-bottom: 14px; }
+.whead .wmeta .mark { margin-bottom: 4px; }
+@media (max-width: 720px) { .marks { grid-template-columns: repeat(2, 1fr); } .marks a { min-height: 100px; padding: 18px; } .mark.l.img img { height: 30px; max-width: 150px; } }

@@ -14,6 +14,10 @@ export type Case = {
   situation: string;
   action: string;
   outcome: string;
+  /** Path to a monochrome mark in /public/logos, when one exists. Otherwise the name is set in type. */
+  logo?: string;
+  /** True when the company is described rather than named; kept off the logo wall. */
+  anonymous?: boolean;
   /** Hard numbers from the case, when the case has them. */
   figures?: { n: string; l: string }[];
 };
@@ -139,6 +143,7 @@ export const cases: Case[] = [
   },
   {
     slug: "blue-lizard-sunscreen",
+    logo: "/logos/blue-lizard-sunscreen.png",
     practice: "value-creation",
     company: "Blue Lizard Sunscreen",
     sector: "Consumer products · skin care",
@@ -150,6 +155,7 @@ export const cases: Case[] = [
   },
   {
     slug: "the-source",
+    logo: "/logos/the-source.png",
     practice: "turnaround",
     company: "The Source",
     sector: "Media · publishing",
@@ -161,6 +167,7 @@ export const cases: Case[] = [
   },
   {
     slug: "rubies-costume",
+    logo: "/logos/rubies-costume.png",
     practice: "transactions",
     company: "Rubie's Costume Company",
     sector: "Consumer products · licensed apparel",
@@ -173,6 +180,7 @@ export const cases: Case[] = [
   },
   {
     slug: "peanut-cooperative",
+    anonymous: true,
     practice: "value-creation",
     company: "Agricultural cooperative (peanuts)",
     sector: "Agriculture · cooperative",
@@ -185,6 +193,7 @@ export const cases: Case[] = [
   },
   {
     slug: "life-sciences",
+    anonymous: true,
     practice: "value-creation",
     company: "Life sciences company",
     sector: "Life sciences",

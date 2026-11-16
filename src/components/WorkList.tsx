@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { cases, practiceNames, type Case } from "@/content/cases";
+import Mark from "@/components/Mark";
 
 const order: Case["practice"][] = ["turnaround", "transactions", "value-creation", "interim-leadership", "operational-ai"];
 
@@ -23,10 +24,10 @@ export default function WorkList() {
         {list.map((c, i) => {
           const isOpen = open === c.slug;
           return (
-            <li key={c.slug} className={isOpen ? "is-open" : ""}>
+            <li key={c.slug} id={c.slug} className={isOpen ? "is-open" : ""}>
               <button type="button" className="whead" aria-expanded={isOpen} onClick={() => setOpen(isOpen ? null : c.slug)}>
                 <span className="n">{String(i + 1).padStart(2, "0")}</span>
-                <span className="wmeta"><span className="sector">{c.company}</span><span className="ctx">{c.sector} · {c.context}</span></span>
+                <span className="wmeta"><Mark c={c} size="s" /><span className="ctx">{c.sector} · {c.context}</span></span>
                 <span className="wtitle">{c.title}</span>
                 <span className="wplus" aria-hidden="true" />
               </button>

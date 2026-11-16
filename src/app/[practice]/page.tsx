@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import SiteScript from "@/components/SiteScript";
 import { practices, bySlug } from "@/content/practices";
 import { cases } from "@/content/cases";
+import Mark from "@/components/Mark";
 import "@/styles/home.css";
 import "@/styles/practice.css";
 
@@ -140,7 +141,8 @@ export default async function PracticePage({ params }: { params: Promise<{ pract
               {rec ? (
                 <>
                   <div className="case rv top">
-                    <div className="ctx">{rec.company} · {rec.sector} · {rec.context}</div>
+                    <div className="recmark"><Mark c={rec} size="m" /></div>
+                    <div className="ctx">{rec.sector} · {rec.context}</div>
                     <dl>
                       <div className="row"><dt>Situation</dt><dd>{rec.situation}</dd></div>
                       <div className="row"><dt>Action</dt><dd>{rec.action}</dd></div>
