@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Marquee from "@/components/Marquee";
 import Intro from "@/components/Intro";
+import Lens from "@/components/Lens";
 import "@/styles/home.css";
 
 export default function Home() {
@@ -53,8 +54,9 @@ export default function Home() {
     <div className="grid">
       <div className="label">Who we are</div>
       <div>
+        <Lens />
         <p className="statement rv">We are the people a lender, a board or a sponsor calls when a business is in trouble and the plan has to work the <em>first</em> time.</p>
-        <p className="lead rv">American Change &amp; Grow is a senior-led advisory firm. The managing director you meet on the first call runs the engagement, sits in the room with your lenders, and stays until the company is stable.</p>
+        <p className="lead rv lens-sub">American Change &amp; Grow is a senior-led advisory firm. The managing director you meet on the first call runs the engagement, sits in the room with your lenders, and stays until the company is stable.</p>
       </div>
     </div>
   </section>

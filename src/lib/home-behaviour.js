@@ -125,6 +125,13 @@ export function run() {
       wrap(st);
     }
     var words = st ? Array.prototype.slice.call(st.querySelectorAll('.wd')) : [];
+    window.addEventListener('acg:lens', function () {
+      var s2 = document.querySelector('.statement'); if (!s2) return;
+      if (!reduced && !s2.querySelector('.wd')) wrap(s2);
+      words = Array.prototype.slice.call(s2.querySelectorAll('.wd'));
+      // the statement is in view when the reader switches: fill it at once rather than waiting for scroll
+      words.forEach(function (w) { w.classList.add('on'); });
+    });
     // 2. figures count-up
     var figs = Array.prototype.slice.call(document.querySelectorAll('.fig'));
     figs.forEach(function (f) {
