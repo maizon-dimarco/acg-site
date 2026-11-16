@@ -41,6 +41,16 @@ html { background: var(--navy-deep); }
 .mq-row a:hover { opacity: 1; }
 @keyframes mq { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
 @media (prefers-reduced-motion: reduce) { .mq-track { animation: none; } .mq { mask-image: none; -webkit-mask-image: none; } .mq-row { flex-wrap: wrap; gap: 32px 48px; } .mq-row[aria-hidden] { display: none; } }
+/* the drum (phones only): a cylinder of marks turning about a vertical axis */
+.wheel { display: none; --face: 160px; --r: calc(var(--face) / 2 / tan(3.14159 / var(--n))); --h: 120px; position: relative; height: var(--h); perspective: 900px; perspective-origin: 50% 50%; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+.drum { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; transform-style: preserve-3d; animation: drum 120s linear infinite; }
+.drum li { position: absolute; left: 50%; top: 50%; width: var(--face); height: var(--h); margin: calc(var(--h) / -2) 0 0 calc(var(--face) / -2); transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r)); backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; align-items: center; justify-content: center; }
+.drum a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; opacity: .7; }
+@keyframes drum { from { transform: translateZ(calc(-1 * var(--r))) rotateY(0deg); } to { transform: translateZ(calc(-1 * var(--r))) rotateY(-360deg); } }
+.wheel .mark.l.img img { height: 34px; max-width: 140px; }
+.wheel .mark.l.img.sq img { height: 48px; }
+@media (max-width: 720px) { .mq { display: none; } .wheel { display: block; } }
+@media (prefers-reduced-motion: reduce) { .drum { animation: none; } }
 /* mark sizing on the drift: badges tall, wordmarks wide, all about the same visual weight */
 .mq .mark.l.img img { height: 48px; max-width: 190px; }
 .mq .mark.l.img.sq img { height: 64px; }
