@@ -17,7 +17,10 @@ export function run() {
   var isMobile = window.matchMedia('(max-width: 720px), (pointer: coarse)').matches;
   var portrait = window.matchMedia('(orientation: portrait)').matches && isMobile;
   var vid = document.getElementById('vid'), film = document.getElementById('film'), loader = document.getElementById('loader');
-  var src = portrait ? '/film/home-mobile.mp4' : '/film/home-desktop.mp4';
+  var pxw = window.innerWidth * (window.devicePixelRatio || 1);
+  var src = portrait ? '/film/home-mobile.mp4' : (pxw >= 2200 ? '/film/home-hd.mp4' : '/film/home-desktop.mp4');
+  // the lead loop at the highest resolution the screen can show
+  if (!portrait) { var lo = document.getElementById('loopOpen'); if (lo) lo.src = pxw >= 3200 ? '/film/loop-open-4k.mp4' : (pxw >= 2200 ? '/film/loop-open-2k.mp4' : '/film/loop-open.mp4'); }
   if (portrait) {
     film.style.backgroundImage = 'url(film/home-mobile-poster.jpg)'; vid.setAttribute('poster', '/film/home-mobile-poster.jpg');
     document.getElementById('loopOpen').src = '/film/loop-open-mobile.mp4'; document.getElementById('loopWater').src = '/film/loop-water-mobile.mp4';
