@@ -63,6 +63,13 @@ export function run() {
   (function loop() { if (dirty) update(); requestAnimationFrame(loop); })();
   setTimeout(function () { document.querySelectorAll('.phero:not(.live) .ln, .wh1 .ln').forEach(function (l) { l.classList.add('on'); }); }, 350);
   wireContactForm();
+  // doorway: hand the hero's transition name to the doorway image, so it grows into the next page's hero
+  document.querySelectorAll('.doorway').forEach(function (d) {
+    d.addEventListener('click', function () {
+      var cur = document.querySelector('.phero .pfilm'); if (cur) cur.style.viewTransitionName = 'none';
+      var img = d.querySelector('.dw-img'); if (img) img.style.viewTransitionName = 'hero';
+    });
+  });
   // ---------- live hero film: the whole clip as a Blob, scrubbed by the three-screen progress ----------
   (function () {
     var lh = document.querySelector('.phero.live'), pv = document.getElementById('pvid');

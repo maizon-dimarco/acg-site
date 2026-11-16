@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces } from "next/font/google";
 import "./globals.css";
+import Smooth from "@/components/Smooth";
 
 // One typeface for the whole site, the same family as the logo. Variable axes: optical size,
 // weight, SOFT (corner softness) and WONK (the quirkier italic forms used in display sizes).
@@ -42,7 +43,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={fraunces.variable}>
-      <body>{children}</body>
+      <body><Smooth />{children}</body>
     </html>
   );
 }

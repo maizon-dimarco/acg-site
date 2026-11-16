@@ -57,3 +57,26 @@ html { background: var(--navy-deep); }
 @media (max-width: 720px) { .mq-row a { height: 56px; } .mq .mark.l.img img { height: 36px; max-width: 140px; } .mq .mark.l.img.sq img { height: 50px; } .mq-track { animation-duration: 45s; } }
 
 section.d.mqsec { padding-block: 80px 90px; }
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Walk-through transitions between pages (cross-document view transitions; browsers without them hard-cut as before).
+   The current hero carries the name "hero"; clicking a doorway moves the name onto the doorway image, so it grows into
+   the next page's hero. The nav keeps its own name so it stays put while the page changes beneath it. */
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+.phero .pfilm, .film { view-transition-name: hero; }
+.nav { view-transition-name: nav; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .7s; animation-timing-function: cubic-bezier(.4,0,.2,1); }
+::view-transition-group(hero) { animation-duration: 1s; animation-timing-function: cubic-bezier(.2,.7,.2,1); }
+::view-transition-old(hero) { animation: vt-out 1s cubic-bezier(.2,.7,.2,1) both; }
+::view-transition-new(hero) { animation: vt-in 1s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; } to { opacity: 1; } }
+::view-transition-group(nav) { animation: none; }
+::view-transition-old(nav) { animation: vt-out .4s ease both; }
+::view-transition-new(nav) { animation: vt-in .4s ease .2s both; }
