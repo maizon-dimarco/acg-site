@@ -31,19 +31,19 @@ html { background: var(--navy-deep); }
 .mark.l.img img { height: 44px; max-width: 220px; } .mark.l.type { font-size: clamp(1.25rem, 1.7vw, 1.6rem); }
 .wall { padding-block: 90px 70px; }
 .wall .pkick { margin-bottom: 36px; }
-/* the drum: a cylinder of marks turning about a vertical axis */
-.wheel { --face: 260px; --r: calc(var(--face) / 2 / tan(3.14159 / var(--n))); --h: 170px; position: relative; height: var(--h); perspective: 1600px; perspective-origin: 50% 50%; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
-.drum { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; transform-style: preserve-3d; animation: drum 150s linear infinite; }
-.wheel:hover .drum { animation-play-state: paused; }
-.drum li { position: absolute; left: 50%; top: 50%; width: var(--face); height: var(--h); margin: calc(var(--h) / -2) 0 0 calc(var(--face) / -2); transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r)); backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; align-items: center; justify-content: center; }
-.drum a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; opacity: .7; transition: opacity .4s; }
-.drum a:hover { opacity: 1; }
-@keyframes drum { from { transform: translateZ(calc(-1 * var(--r))) rotateY(0deg); } to { transform: translateZ(calc(-1 * var(--r))) rotateY(-360deg); } }
-@media (prefers-reduced-motion: reduce) { .drum { animation: none; } }
-@media (max-width: 720px) { .wheel { --face: 160px; --h: 120px; perspective: 900px; } .drum { animation-duration: 55s; } }
+/* marquee */
+.mq { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+.mq-track { display: flex; width: max-content; animation: mq 70s linear infinite; }
+.mq:hover .mq-track { animation-play-state: paused; }
+.mq-row { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(56px, 6vw, 110px); padding-right: clamp(56px, 6vw, 110px); }
+.mq-row li { flex: none; }
+.mq-row a { display: flex; align-items: center; height: 72px; opacity: .55; transition: opacity .4s; }
+.mq-row a:hover { opacity: 1; }
+@keyframes mq { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+@media (prefers-reduced-motion: reduce) { .mq-track { animation: none; } .mq { mask-image: none; -webkit-mask-image: none; } .mq-row { flex-wrap: wrap; gap: 32px 48px; } .mq-row[aria-hidden] { display: none; } }
 /* mark sizing on the drift: badges tall, wordmarks wide, all about the same visual weight */
-.wheel .mark.l.img img { height: 48px; max-width: 220px; }
-.wheel .mark.l.img.sq img { height: 68px; }
-@media (max-width: 720px) { .wheel .mark.l.img img { height: 34px; max-width: 150px; } .wheel .mark.l.img.sq img { height: 48px; } }
+.mq .mark.l.img img { height: 48px; max-width: 190px; }
+.mq .mark.l.img.sq img { height: 64px; }
+@media (max-width: 720px) { .mq-row a { height: 56px; } .mq .mark.l.img img { height: 36px; max-width: 140px; } .mq .mark.l.img.sq img { height: 50px; } .mq-track { animation-duration: 45s; } }
 
 section.d.mqsec { padding-block: 80px 90px; }
