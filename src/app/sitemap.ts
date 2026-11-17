@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { practices } from "@/content/practices";
 
-const base = process.env.NEXT_PUBLIC_SITE_URL || "https://acg-site-virid.vercel.app";
+const base = process.env.NEXT_PUBLIC_SITE_URL || "https://www.acandg.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

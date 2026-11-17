@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description:
     "A senior-led turnaround and restructuring firm. Turnaround, refinancing and M&A, value creation, interim leadership and operational AI for middle-market companies and their lenders.",
   icons: { icon: "/brand/acg-favicon.svg" },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://acg-site-virid.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.acandg.com"),
   openGraph: {
     type: "website",
     siteName: "American Change & Grow",
